@@ -1,4 +1,4 @@
-﻿
+
 namespace Sparkle.LinkedInNET.ServiceDefinition
 {
     using System;
@@ -46,6 +46,12 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
 
         [XmlAttribute]
         public string HttpMethod { get; set; }
+
+        [XmlAttribute]
+        public string Query { get; set; }
+
+        [XmlAttribute]
+        public bool RequiresTunneling { get; set; }
 
         [XmlAttribute]
         public bool RequiresUserAuthentication { get; set; }
