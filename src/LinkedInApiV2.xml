@@ -67,7 +67,7 @@
 			<Field Name="errors" Type="dynamic"/>
 		</ReturnType>
     
-		<ReturnType Name="location" ClassName="Location">
+		<ReturnType Name="geoLocation" ClassName="GeoLocation">
 			<Field Name="countryCode" PropertyName="CountryCode"/>
 			<Field Name="postalCode" PropertyName="PostalCode" />
 			<Field Name="standardizedLocationUrn" PropertyName="StandardizedLocationUrn" />
@@ -80,7 +80,7 @@
 			<Field Name="companyName" PropertyName="CompanyName" Type="Common.MultiLocaleString"/>
 			<Field Name="description" PropertyName="Description" Type="Common.MultiLocaleRichText"/>
 			<Field Name="endMonthYear" PropertyName="EndMonthYear" Type="DateParts"/>
-			<Field Name="location" PropertyName="Location" Type="Location"/>
+			<Field Name="geoLocation" PropertyName="GeoLocation" Type="GeoLocation"/>
 			<Field Name="locationName" PropertyName="LocationName" Type="Common.MultiLocaleRichText"/>
 			<Field Name="richMediaAssociations" PropertyName="RichMediaAssociations" IsCollection="1" Type="RichMediaURN"/>
 			<Field Name="startMonthYear" PropertyName="startMonthYear" Type="DateParts"/>
@@ -1140,7 +1140,7 @@
                Title="Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names."
                RequiresUserAuthentication="1" 
                UseFieldSelectors="0"
-               Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL"/>
+               Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/industries"/>
     
 		<ApiMethod MethodName="GetJobFunctions"
                HttpMethod="POST" RequiresTunneling="1" 
@@ -1150,7 +1150,7 @@
                Title=""
                RequiresUserAuthentication="1"
                UseFieldSelectors="0"
-               Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US"/>
+               Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/functions  locale e.g.: en_US"/>
 		
     <ApiMethod MethodName="GetCountryGroups"
                HttpMethod="POST" RequiresTunneling="1" 
@@ -1160,7 +1160,7 @@
                Title=""
                RequiresUserAuthentication="1"
                UseFieldSelectors="0"
-               Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups"/>
+               Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/country-groups"/>
 		
     <ApiMethod MethodName="GetCountries"
               HttpMethod="POST" RequiresTunneling="1" 
@@ -1170,7 +1170,18 @@
               Title=""
               RequiresUserAuthentication="1"
               UseFieldSelectors="0"
-              Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries"/>
+              Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/countries"/>
+
+    <ApiMethod MethodName="GetGeoLocations"
+              HttpMethod="POST" 
+              Path="/v2/geoTypeahead"
+              Query="q=search&amp;query={keyword}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+              ReturnType="GeoLocations"
+              RequiresTunneling="1" 
+              RequiresUserAuthentication="1"
+              UseFieldSelectors="0"
+              UseRestliProtocol="1"
+              Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/geo-typeahead?tabs=http#geo-typeahead"/>
 		
     <ApiMethod MethodName="GetStates"
               HttpMethod="POST" RequiresTunneling="1" 
@@ -1180,7 +1191,7 @@
               Title=""
               RequiresUserAuthentication="1"
               UseFieldSelectors="0"
-              Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries"/>
+              Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/states"/>
 		
     <ApiMethod MethodName="GetRegions"
               HttpMethod="POST" RequiresTunneling="1" 
@@ -1190,7 +1201,7 @@
               Title=""
               RequiresUserAuthentication="1"
               UseFieldSelectors="0"
-              Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions"/>
+              Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/regions"/>
 		
     <ApiMethod MethodName="GetSeniorities"
               HttpMethod="POST" RequiresTunneling="1" 
@@ -1200,7 +1211,7 @@
               Title=""
               RequiresUserAuthentication="1"
               UseFieldSelectors="0"
-              Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities"/>
+              Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/seniorities"/>
 		
     <ApiMethod MethodName="GetAudienceCounts"
 							 HttpMethod="POST" RequiresTunneling="1" 
@@ -1231,7 +1242,7 @@
               Title=""
               RequiresUserAuthentication="1"
               UseFieldSelectors="0"
-              Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries"/>
+              Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/countries#get-all"/>
 		
 		<ApiMethod MethodName="GetAllStates"
 							HttpMethod="POST" RequiresTunneling="1" 
@@ -1241,7 +1252,7 @@
 							Title=""
 							RequiresUserAuthentication="1"
 							UseFieldSelectors="0"
-							Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries"/>
+							Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/states#get-all"/>
 		
     <ApiMethod MethodName="GetAllRegions"
               HttpMethod="POST" RequiresTunneling="1" 
@@ -1251,7 +1262,7 @@
               Title=""
               RequiresUserAuthentication="1"
               UseFieldSelectors="0"
-              Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions"/>
+              Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/regions#get-all"/>
 		
     <ReturnType Name="TargetingFacets" ClassName="TargetingFacets" AutoGenerateFieldSelectors="1">
 			<Field Name="elements"  PropertyName="Elements" Type="dynamic" IsCollection="1"/>
@@ -1287,8 +1298,15 @@
 			<Field Name="elements"  PropertyName="Elements" Type="TargetingCountry" IsCollection="1"/>
 			<Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
 		</ReturnType>
+
+    <ReturnType Name="GeoLocations" ClassName="GeoLocations" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="TargetingGeoLocation" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
     
-		<ReturnType Name="States" ClassName="States" AutoGenerateFieldSelectors="1">
+
+    <ReturnType Name="States" ClassName="States" AutoGenerateFieldSelectors="1">
 			<Field Name="elements"  PropertyName="Elements" Type="TargetingState" IsCollection="1"/>
 			<Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
 		</ReturnType>
@@ -1308,6 +1326,11 @@
 			<Field Name="name"  PropertyName="Name" Type="Common.MultiLocaleString" />
 			<Field Name="$URN"  PropertyName="Urn" />
 		</ReturnType>
+
+    <ReturnType Name="TargetingGeoLocation" ClassName="TargetingGeoLocation">
+      <Field Name="displayText"  PropertyName="DisplayText" />
+      <Field Name="entity"  PropertyName="Entity" />
+    </ReturnType>
     
 		<ReturnType Name="TargetingCountryGroup" ClassName="TargetingCountryGroup">
 			<Field Name="countryGroupCode"  PropertyName="CountryGroupCode" />
@@ -1317,9 +1340,7 @@
     
 		<ReturnType Name="TargetingCountry" ClassName="TargetingCountry">
 			<Field Name="countryGroup"  PropertyName="CountryGroup" />
-			<Field Name="countryCode"  PropertyName="CountryCode" />
-			<Field Name="name"  PropertyName="Name" Type="Common.LocaleString" />
-			<Field Name="$URN"  PropertyName="Urn" />
+			<Field Name="entity"  PropertyName="Entity" />
 		</ReturnType>
     
 		<ReturnType Name="TargetingState" ClassName="TargetingState">
@@ -1496,7 +1517,7 @@
       <Field Name="industries" PropertyName="Industries" IsCollection="1" />
       <Field Name="interfaceLocales" PropertyName="InterfaceLocales" Type="Locale" IsCollection="1"/>
       <Field Name="jobFunctions" PropertyName="JobFunctions"  IsCollection="1" />
-      <Field Name="locations" PropertyName="Locations"  IsCollection="1" />
+      <Field Name="geoLocations" PropertyName="GeoLocations"  IsCollection="1" />
       <Field Name="seniorities" PropertyName="Seniorities"  IsCollection="1" />
       <Field Name="staffCountRanges" PropertyName="StaffCountRanges"  IsCollection="1" />
       <Field Name="visibleToGuest" PropertyName="VisibleToGuest"  Type="bool" />
@@ -1506,7 +1527,7 @@
       <Field Name="industries" PropertyName="Industries" IsCollection="1" />
       <Field Name="interfaceLocales" PropertyName="InterfaceLocales" Type="Locale" IsCollection="1"/>
       <Field Name="jobFunctions" PropertyName="JobFunctions"  IsCollection="1" />
-      <Field Name="locations" PropertyName="Locations"  IsCollection="1" />
+      <Field Name="geoLocations" PropertyName="GeoLocations"  IsCollection="1" />
       <Field Name="seniorities" PropertyName="Seniorities"  IsCollection="1" />
       <Field Name="staffCountRanges" PropertyName="StaffCountRanges"  IsCollection="1" />
       <Field Name="connectionsOnly" PropertyName="ConnectionsOnly" Type="bool"/>
