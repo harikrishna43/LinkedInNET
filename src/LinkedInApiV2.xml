@@ -1175,12 +1175,13 @@
     <ApiMethod MethodName="GetGeoLocations"
               HttpMethod="POST" 
               Path="/v2/geoTypeahead"
-              Query="q=search&amp;query={keyword}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+              Query="q=search&amp;query={keyword}&amp;locale=({language})&amp;count={int Count = 50}&amp;start={int Start = 0}"
               ReturnType="GeoLocations"
               RequiresTunneling="1" 
               RequiresUserAuthentication="1"
               UseFieldSelectors="0"
               UseRestliProtocol="1"
+              SkipUrlParamsEscape="language"
               Remark="See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/geo-typeahead?tabs=http#geo-typeahead"/>
 		
     <ApiMethod MethodName="GetStates"
