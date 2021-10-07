@@ -118,7 +118,7 @@ namespace Sparkle.LinkedInNET.Profiles
     }
 }
 
-// WriteReturnTypes(Profiles, location)
+// WriteReturnTypes(Profiles, geoLocation)
 namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
@@ -128,10 +128,10 @@ namespace Sparkle.LinkedInNET.Profiles
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'location'
+    /// Name: 'geoLocation'
     /// </summary>
-    [Serializable, XmlRoot("location")]
-    public class Location
+    [Serializable, XmlRoot("geoLocation")]
+    public class GeoLocation
     {
         /// <summary>
         /// Field: 'countryCode' (on-demand)
@@ -215,11 +215,11 @@ namespace Sparkle.LinkedInNET.Profiles
         public DateParts EndMonthYear { get; set; }
 
         /// <summary>
-        /// Field: 'location' (on-demand)
+        /// Field: 'geoLocation' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "location")]
-        [JsonProperty(PropertyName = "location")]
-        public Location Location { get; set; }
+        [XmlElement(ElementName = "geoLocation")]
+        [JsonProperty(PropertyName = "geoLocation")]
+        public GeoLocation GeoLocation { get; set; }
 
         /// <summary>
         /// Field: 'locationName' (on-demand)
@@ -533,7 +533,7 @@ namespace Sparkle.LinkedInNET.Profiles
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'person', 'PersonList', 'location', 'position', 'dateParts', 'richMediaURN', 'profilePicture', 'displayImageLoaded', 'displayImageElements', 'displayImageElementIdentifiers', 'DegreeSize' return types.
+    /// Field selectors for the 'person', 'PersonList', 'geoLocation', 'position', 'dateParts', 'richMediaURN', 'profilePicture', 'displayImageLoaded', 'displayImageElements', 'displayImageElementIdentifiers', 'DegreeSize' return types.
     /// </summary>
     public static class ProfilesFields {
         /// <summary>
@@ -5682,6 +5682,38 @@ namespace Sparkle.LinkedInNET.Targeting
     }
 }
 
+// WriteReturnTypes(Targeting, GeoLocations)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'GeoLocations'
+    /// </summary>
+    [Serializable, XmlRoot("GeoLocations")]
+    public class GeoLocations
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<TargetingGeoLocation> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(Targeting, States)
 namespace Sparkle.LinkedInNET.Targeting
 {
@@ -5817,6 +5849,38 @@ namespace Sparkle.LinkedInNET.Targeting
     }
 }
 
+// WriteReturnTypes(Targeting, TargetingGeoLocation)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'TargetingGeoLocation'
+    /// </summary>
+    [Serializable, XmlRoot("TargetingGeoLocation")]
+    public class TargetingGeoLocation
+    {
+        /// <summary>
+        /// Field: 'displayText' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "displayText")]
+        [JsonProperty(PropertyName = "displayText")]
+        public string DisplayText { get; set; }
+
+        /// <summary>
+        /// Field: 'entity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "entity")]
+        [JsonProperty(PropertyName = "entity")]
+        public string Entity { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(Targeting, TargetingCountryGroup)
 namespace Sparkle.LinkedInNET.Targeting
 {
@@ -5879,25 +5943,11 @@ namespace Sparkle.LinkedInNET.Targeting
         public string CountryGroup { get; set; }
 
         /// <summary>
-        /// Field: 'countryCode' (on-demand)
+        /// Field: 'entity' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "countryCode")]
-        [JsonProperty(PropertyName = "countryCode")]
-        public string CountryCode { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public Common.LocaleString Name { get; set; }
-
-        /// <summary>
-        /// Field: '$URN' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "$URN")]
-        [JsonProperty(PropertyName = "$URN")]
-        public string Urn { get; set; }
+        [XmlElement(ElementName = "entity")]
+        [JsonProperty(PropertyName = "entity")]
+        public string Entity { get; set; }
 
     }
 }
@@ -6009,7 +6059,7 @@ namespace Sparkle.LinkedInNET.Targeting
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'TargetingFacets', 'AudienceCounts', 'AudienceCountElements', 'Industries', 'JobFunctions', 'CountryGroups', 'Countries', 'States', 'Regions', 'Seniorities', 'TargetingBase', 'TargetingCountryGroup', 'TargetingCountry', 'TargetingState', 'TargetingRegion' return types.
+    /// Field selectors for the 'TargetingFacets', 'AudienceCounts', 'AudienceCountElements', 'Industries', 'JobFunctions', 'CountryGroups', 'Countries', 'GeoLocations', 'States', 'Regions', 'Seniorities', 'TargetingBase', 'TargetingGeoLocation', 'TargetingCountryGroup', 'TargetingCountry', 'TargetingState', 'TargetingRegion' return types.
     /// </summary>
     public static class TargetingFields {
         /// <summary>
@@ -6158,6 +6208,27 @@ namespace Sparkle.LinkedInNET.Targeting
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
         public static FieldSelector<Countries> WithAllFields(this FieldSelector<Countries> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<GeoLocations> WithElements(this FieldSelector<GeoLocations> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<GeoLocations> WithPaging(this FieldSelector<GeoLocations> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<GeoLocations> WithAllFields(this FieldSelector<GeoLocations> me) { return me.AddRange("elements", "paging"); }
         
         /// <summary>
         /// Includes the field 'elements'.
@@ -7305,11 +7376,11 @@ namespace Sparkle.LinkedInNET.Common
         public List<string> JobFunctions { get; set; }
 
         /// <summary>
-        /// Field: 'locations' (on-demand)
+        /// Field: 'geoLocations' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "locations")]
-        [JsonProperty(PropertyName = "locations")]
-        public List<string> Locations { get; set; }
+        [XmlElement(ElementName = "geoLocations")]
+        [JsonProperty(PropertyName = "geoLocations")]
+        public List<string> GeoLocations { get; set; }
 
         /// <summary>
         /// Field: 'seniorities' (on-demand)
@@ -7372,11 +7443,11 @@ namespace Sparkle.LinkedInNET.Common
         public List<string> JobFunctions { get; set; }
 
         /// <summary>
-        /// Field: 'locations' (on-demand)
+        /// Field: 'geoLocations' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "locations")]
-        [JsonProperty(PropertyName = "locations")]
-        public List<string> Locations { get; set; }
+        [XmlElement(ElementName = "geoLocations")]
+        [JsonProperty(PropertyName = "geoLocations")]
+        public List<string> GeoLocations { get; set; }
 
         /// <summary>
         /// Field: 'seniorities' (on-demand)
@@ -7708,14 +7779,17 @@ namespace Sparkle.LinkedInNET.Profiles
                             , FieldSelector<Profiles.Person> fields = null
                         )
                         {
-                            string urlFormat = "/v2/people/(id:{profileId})";
                             string skipUrlParamsEscape = "";
+                            string urlFormat = "/v2/people/(id:{profileId})";
                             var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "profileId", profileId);
+                            var query = "projection=(*,profilePicture(displayImage~:playableStreams))";
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
                             context.Method =  "POST";
                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                            // Requires for GET post tunneling
+                            this.CreateTunnelingPostStream(context, query);
 
                             if (!this.ExecuteQuery(context, true))
                                 this.HandleJsonErrorResponse(context);
@@ -7736,14 +7810,17 @@ namespace Sparkle.LinkedInNET.Profiles
                                 , FieldSelector<Profiles.Person> fields = null
                             )
                             {
-                                string urlFormat = "/v2/people/(id:{profileId})";
                                 string skipUrlParamsEscape = "";
+                                string urlFormat = "/v2/people/(id:{profileId})";
                                 var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "profileId", profileId);
+                                var query = "projection=(*,profilePicture(displayImage~:playableStreams))";
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
                                 context.Method =  "POST";
                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                // Requires for GET post tunneling
+                                this.CreateTunnelingPostStream(context, query);
 
                                 var exec = await this.ExecuteQueryAsync(context, true);
                                 if (!exec)
@@ -7761,15 +7838,21 @@ namespace Sparkle.LinkedInNET.Profiles
                                 /// </remarks>
                                 public Profiles.PersonList GetProfilesByIds(
                                       UserAuthorization user 
+                                    , string personIds 
                                     , FieldSelector<Profiles.PersonList> fields = null
                                 )
                                 {
+                                    string skipUrlParamsEscape = "personIds";
                                     var url = "/v2/people";
+                                    string queryFormat = "ids=List({personIds})&projection=(*,results(*(*,profilePicture(displayImage~:playableStreams))))";
+                                    var query = FormatQuery(queryFormat, fields, skipUrlParamsEscape, "personIds", personIds);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
                                     context.Method =  "POST";
                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                    // Requires for GET post tunneling
+                                    this.CreateTunnelingPostStream(context, query);
 
                                     if (!this.ExecuteQuery(context, true))
                                         this.HandleJsonErrorResponse(context);
@@ -7786,15 +7869,21 @@ namespace Sparkle.LinkedInNET.Profiles
                                     /// </remarks>
                                     public async Task<Profiles.PersonList> GetProfilesByIdsAsync(
                                           UserAuthorization user 
+                                        , string personIds 
                                         , FieldSelector<Profiles.PersonList> fields = null
                                     )
                                     {
+                                        string skipUrlParamsEscape = "personIds";
                                         var url = "/v2/people";
+                                        string queryFormat = "ids=List({personIds})&projection=(*,results(*(*,profilePicture(displayImage~:playableStreams))))";
+                                        var query = FormatQuery(queryFormat, fields, skipUrlParamsEscape, "personIds", personIds);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
                                         context.Method =  "POST";
                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                        // Requires for GET post tunneling
+                                        this.CreateTunnelingPostStream(context, query);
 
                                         var exec = await this.ExecuteQueryAsync(context, true);
                                         if (!exec)
@@ -7812,8 +7901,8 @@ namespace Sparkle.LinkedInNET.Profiles
                                             , string profileId 
                                         )
                                         {
-                                            string urlFormat = "/v2/connections/urn:li:person:{profileId}";
                                             string skipUrlParamsEscape = "";
+                                            string urlFormat = "/v2/connections/urn:li:person:{profileId}";
                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "profileId", profileId);
 
                                             var context = new RequestContext();
@@ -7836,8 +7925,8 @@ namespace Sparkle.LinkedInNET.Profiles
                                                 , string profileId 
                                             )
                                             {
-                                                string urlFormat = "/v2/connections/urn:li:person:{profileId}";
                                                 string skipUrlParamsEscape = "";
+                                                string urlFormat = "/v2/connections/urn:li:person:{profileId}";
                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "profileId", profileId);
 
                                                 var context = new RequestContext();
@@ -7888,8 +7977,8 @@ namespace Sparkle.LinkedInNET.Organizations
                     , FieldSelector<Organizations.Organization> fields = null
                 )
                 {
-                    string urlFormat = "/v2/organizations/{CompanyId}";
                     string skipUrlParamsEscape = "";
+                    string urlFormat = "/v2/organizations/{CompanyId}";
                     var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "CompanyId", companyId);
 
                     var context = new RequestContext();
@@ -7916,8 +8005,8 @@ namespace Sparkle.LinkedInNET.Organizations
                         , FieldSelector<Organizations.Organization> fields = null
                     )
                     {
-                        string urlFormat = "/v2/organizations/{CompanyId}";
                         string skipUrlParamsEscape = "";
+                        string urlFormat = "/v2/organizations/{CompanyId}";
                         var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "CompanyId", companyId);
 
                         var context = new RequestContext();
@@ -7945,8 +8034,8 @@ namespace Sparkle.LinkedInNET.Organizations
                             , FieldSelector<Organizations.Organization> fields = null
                         )
                         {
-                            string urlFormat = "/v2/organizationBrands/{CompanyId}";
                             string skipUrlParamsEscape = "";
+                            string urlFormat = "/v2/organizationBrands/{CompanyId}";
                             var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "CompanyId", companyId);
 
                             var context = new RequestContext();
@@ -7973,8 +8062,8 @@ namespace Sparkle.LinkedInNET.Organizations
                                 , FieldSelector<Organizations.Organization> fields = null
                             )
                             {
-                                string urlFormat = "/v2/organizationBrands/{CompanyId}";
                                 string skipUrlParamsEscape = "";
+                                string urlFormat = "/v2/organizationBrands/{CompanyId}";
                                 var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "CompanyId", companyId);
 
                                 var context = new RequestContext();
@@ -7995,14 +8084,20 @@ namespace Sparkle.LinkedInNET.Organizations
                                 /// </summary>
                                 public Organizations.OrganizationPageStatistics GetOrganizationPerformanceData(
                                       UserAuthorization user 
+                                    , string companyId 
                                 )
                                 {
+                                    string skipUrlParamsEscape = "";
                                     var url = "/v2/organizationPageStatistics";
+                                    string queryFormat = "q=organization&organization=urn:li:organization:{CompanyId}";
+                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
                                     context.Method =  "POST";
                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                    // Requires for GET post tunneling
+                                    this.CreateTunnelingPostStream(context, query);
 
                                     if (!this.ExecuteQuery(context))
                                         this.HandleJsonErrorResponse(context);
@@ -8016,14 +8111,20 @@ namespace Sparkle.LinkedInNET.Organizations
                                     /// </summary>
                                     public async Task<Organizations.OrganizationPageStatistics> GetOrganizationPerformanceDataAsync(
                                           UserAuthorization user 
+                                        , string companyId 
                                     )
                                     {
+                                        string skipUrlParamsEscape = "";
                                         var url = "/v2/organizationPageStatistics";
+                                        string queryFormat = "q=organization&organization=urn:li:organization:{CompanyId}";
+                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
                                         context.Method =  "POST";
                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                        // Requires for GET post tunneling
+                                        this.CreateTunnelingPostStream(context, query);
 
                                         var exec = await this.ExecuteQueryAsync(context);
                                         if (!exec)
@@ -8045,11 +8146,14 @@ namespace Sparkle.LinkedInNET.Organizations
                                         )
                                         {
                                             var url = "/v2/organizationalEntityAcls";
+                                            var query = "q=roleAssignee&role=ADMINISTRATOR&projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))";
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
                                             context.Method =  "POST";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                            // Requires for GET post tunneling
+                                            this.CreateTunnelingPostStream(context, query);
 
                                             if (!this.ExecuteQuery(context))
                                                 this.HandleJsonErrorResponse(context);
@@ -8070,11 +8174,14 @@ namespace Sparkle.LinkedInNET.Organizations
                                             )
                                             {
                                                 var url = "/v2/organizationalEntityAcls";
+                                                var query = "q=roleAssignee&role=ADMINISTRATOR&projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))";
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
                                                 context.Method =  "POST";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                // Requires for GET post tunneling
+                                                this.CreateTunnelingPostStream(context, query);
 
                                                 var exec = await this.ExecuteQueryAsync(context);
                                                 if (!exec)
@@ -8092,14 +8199,20 @@ namespace Sparkle.LinkedInNET.Organizations
                                                 /// </remarks>
                                                 public Organizations.OrgFollowerStatistic GetOrgFollowerStatistics(
                                                       UserAuthorization user 
+                                                    , string companyId 
                                                 )
                                                 {
+                                                    string skipUrlParamsEscape = "";
                                                     var url = "/v2/organizationalEntityFollowerStatistics";
+                                                    string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
+                                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
 
                                                     var context = new RequestContext();
                                                     context.UserAuthorization = user;
                                                     context.Method =  "POST";
                                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                    // Requires for GET post tunneling
+                                                    this.CreateTunnelingPostStream(context, query);
 
                                                     if (!this.ExecuteQuery(context))
                                                         this.HandleJsonErrorResponse(context);
@@ -8116,14 +8229,20 @@ namespace Sparkle.LinkedInNET.Organizations
                                                     /// </remarks>
                                                     public async Task<Organizations.OrgFollowerStatistic> GetOrgFollowerStatisticsAsync(
                                                           UserAuthorization user 
+                                                        , string companyId 
                                                     )
                                                     {
+                                                        string skipUrlParamsEscape = "";
                                                         var url = "/v2/organizationalEntityFollowerStatistics";
+                                                        string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
+                                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
 
                                                         var context = new RequestContext();
                                                         context.UserAuthorization = user;
                                                         context.Method =  "POST";
                                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                        // Requires for GET post tunneling
+                                                        this.CreateTunnelingPostStream(context, query);
 
                                                         var exec = await this.ExecuteQueryAsync(context);
                                                         if (!exec)
@@ -8141,14 +8260,22 @@ namespace Sparkle.LinkedInNET.Organizations
                                                         /// </remarks>
                                                         public Organizations.Mentions GetOrganizationsByKey(
                                                               UserAuthorization user 
+                                                            , string keyword 
+                                                            , int start = 0
+                                                            , int count = 50
                                                         )
                                                         {
+                                                            string skipUrlParamsEscape = "";
                                                             var url = "/v2/search";
+                                                            string queryFormat = "q=companiesV2&baseSearchParams.keywords={keyword}&start={int Start = 0}&count={int Count = 50}&projection=(elements*(entity~(id, name, vanityName, logoV2(original~:playableStreams))),paging)";
+                                                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "keyword", keyword, "int Start = 0", start, "int Count = 50", count);
 
                                                             var context = new RequestContext();
                                                             context.UserAuthorization = user;
                                                             context.Method =  "POST";
                                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                            // Requires for GET post tunneling
+                                                            this.CreateTunnelingPostStream(context, query);
 
                                                             if (!this.ExecuteQuery(context))
                                                                 this.HandleJsonErrorResponse(context);
@@ -8165,14 +8292,22 @@ namespace Sparkle.LinkedInNET.Organizations
                                                             /// </remarks>
                                                             public async Task<Organizations.Mentions> GetOrganizationsByKeyAsync(
                                                                   UserAuthorization user 
+                                                                , string keyword 
+                                                                , int start = 0
+                                                                , int count = 50
                                                             )
                                                             {
+                                                                string skipUrlParamsEscape = "";
                                                                 var url = "/v2/search";
+                                                                string queryFormat = "q=companiesV2&baseSearchParams.keywords={keyword}&start={int Start = 0}&count={int Count = 50}&projection=(elements*(entity~(id, name, vanityName, logoV2(original~:playableStreams))),paging)";
+                                                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "keyword", keyword, "int Start = 0", start, "int Count = 50", count);
 
                                                                 var context = new RequestContext();
                                                                 context.UserAuthorization = user;
                                                                 context.Method =  "POST";
                                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                // Requires for GET post tunneling
+                                                                this.CreateTunnelingPostStream(context, query);
 
                                                                 var exec = await this.ExecuteQueryAsync(context);
                                                                 if (!exec)
@@ -8193,14 +8328,17 @@ namespace Sparkle.LinkedInNET.Organizations
                                                                     , string companyId 
                                                                 )
                                                                 {
-                                                                    string urlFormat = "/v2/networkSizes/urn:li:organization:{CompanyId}";
                                                                     string skipUrlParamsEscape = "";
+                                                                    string urlFormat = "/v2/networkSizes/urn:li:organization:{CompanyId}";
                                                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
+                                                                    var query = "edgeType=CompanyFollowedByMember";
 
                                                                     var context = new RequestContext();
                                                                     context.UserAuthorization = user;
                                                                     context.Method =  "POST";
                                                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                    // Requires for GET post tunneling
+                                                                    this.CreateTunnelingPostStream(context, query);
 
                                                                     if (!this.ExecuteQuery(context))
                                                                         this.HandleJsonErrorResponse(context);
@@ -8220,14 +8358,17 @@ namespace Sparkle.LinkedInNET.Organizations
                                                                         , string companyId 
                                                                     )
                                                                     {
-                                                                        string urlFormat = "/v2/networkSizes/urn:li:organization:{CompanyId}";
                                                                         string skipUrlParamsEscape = "";
+                                                                        string urlFormat = "/v2/networkSizes/urn:li:organization:{CompanyId}";
                                                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
+                                                                        var query = "edgeType=CompanyFollowedByMember";
 
                                                                         var context = new RequestContext();
                                                                         context.UserAuthorization = user;
                                                                         context.Method =  "POST";
                                                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                        // Requires for GET post tunneling
+                                                                        this.CreateTunnelingPostStream(context, query);
 
                                                                         var exec = await this.ExecuteQueryAsync(context);
                                                                         if (!exec)
@@ -8321,14 +8462,21 @@ namespace Sparkle.LinkedInNET.Shares
                         /// </remarks>
                         public Shares.ShareStatistic GetShareStatistics(
                               UserAuthorization user 
+                            , string companyId 
+                            , string shareId 
                         )
                         {
+                            string skipUrlParamsEscape = "";
                             var url = "/v2/organizationalEntityShareStatistics";
+                            string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
+                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
                             context.Method =  "POST";
                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                            // Requires for GET post tunneling
+                            this.CreateTunnelingPostStream(context, query);
 
                             if (!this.ExecuteQuery(context))
                                 this.HandleJsonErrorResponse(context);
@@ -8345,14 +8493,21 @@ namespace Sparkle.LinkedInNET.Shares
                             /// </remarks>
                             public async Task<Shares.ShareStatistic> GetShareStatisticsAsync(
                                   UserAuthorization user 
+                                , string companyId 
+                                , string shareId 
                             )
                             {
+                                string skipUrlParamsEscape = "";
                                 var url = "/v2/organizationalEntityShareStatistics";
+                                string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
+                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
                                 context.Method =  "POST";
                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                // Requires for GET post tunneling
+                                this.CreateTunnelingPostStream(context, query);
 
                                 var exec = await this.ExecuteQueryAsync(context);
                                 if (!exec)
@@ -8370,14 +8525,21 @@ namespace Sparkle.LinkedInNET.Shares
                                 /// </remarks>
                                 public Shares.PostStatistic GetSharePostStatistics(
                                       UserAuthorization user 
+                                    , string companyId 
+                                    , string shareId 
                                 )
                                 {
+                                    string skipUrlParamsEscape = "";
                                     var url = "/v2/organizationalEntityShareStatistics";
+                                    string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]={ShareId}";
+                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
                                     context.Method =  "POST";
                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                    // Requires for GET post tunneling
+                                    this.CreateTunnelingPostStream(context, query);
 
                                     if (!this.ExecuteQuery(context))
                                         this.HandleJsonErrorResponse(context);
@@ -8394,14 +8556,21 @@ namespace Sparkle.LinkedInNET.Shares
                                     /// </remarks>
                                     public async Task<Shares.PostStatistic> GetSharePostStatisticsAsync(
                                           UserAuthorization user 
+                                        , string companyId 
+                                        , string shareId 
                                     )
                                     {
+                                        string skipUrlParamsEscape = "";
                                         var url = "/v2/organizationalEntityShareStatistics";
+                                        string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]={ShareId}";
+                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
                                         context.Method =  "POST";
                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                        // Requires for GET post tunneling
+                                        this.CreateTunnelingPostStream(context, query);
 
                                         var exec = await this.ExecuteQueryAsync(context);
                                         if (!exec)
@@ -8419,14 +8588,23 @@ namespace Sparkle.LinkedInNET.Shares
                                         /// </remarks>
                                         public Shares.ShareStatistic GetShareStatisticsPerDay(
                                               UserAuthorization user 
+                                            , string companyId 
+                                            , string shareId 
+                                            , string startTimestamp 
+                                            , string endTimestamp 
                                         )
                                         {
+                                            string skipUrlParamsEscape = "";
                                             var url = "/v2/organizationalEntityShareStatistics";
+                                            string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}&timeIntervals.timeGranularityType=DAY&timeIntervals.timeRange.start={StartTimestamp}&timeIntervals.timeRange.end={EndTimestamp}";
+                                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId, "StartTimestamp", startTimestamp, "EndTimestamp", endTimestamp);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
                                             context.Method =  "POST";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                            // Requires for GET post tunneling
+                                            this.CreateTunnelingPostStream(context, query);
 
                                             if (!this.ExecuteQuery(context))
                                                 this.HandleJsonErrorResponse(context);
@@ -8443,14 +8621,23 @@ namespace Sparkle.LinkedInNET.Shares
                                             /// </remarks>
                                             public async Task<Shares.ShareStatistic> GetShareStatisticsPerDayAsync(
                                                   UserAuthorization user 
+                                                , string companyId 
+                                                , string shareId 
+                                                , string startTimestamp 
+                                                , string endTimestamp 
                                             )
                                             {
+                                                string skipUrlParamsEscape = "";
                                                 var url = "/v2/organizationalEntityShareStatistics";
+                                                string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}&timeIntervals.timeGranularityType=DAY&timeIntervals.timeRange.start={StartTimestamp}&timeIntervals.timeRange.end={EndTimestamp}";
+                                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId, "StartTimestamp", startTimestamp, "EndTimestamp", endTimestamp);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
                                                 context.Method =  "POST";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                // Requires for GET post tunneling
+                                                this.CreateTunnelingPostStream(context, query);
 
                                                 var exec = await this.ExecuteQueryAsync(context);
                                                 if (!exec)
@@ -8468,14 +8655,23 @@ namespace Sparkle.LinkedInNET.Shares
                                                 /// </remarks>
                                                 public Shares.PostStatistic GetSharePostStatisticsPerDay(
                                                       UserAuthorization user 
+                                                    , string companyId 
+                                                    , string shareId 
+                                                    , string startTimestamp 
+                                                    , string endTimestamp 
                                                 )
                                                 {
+                                                    string skipUrlParamsEscape = "";
                                                     var url = "/v2/organizationalEntityShareStatistics";
+                                                    string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]={ShareId}&timeIntervals.timeGranularityType=DAY&timeIntervals.timeRange.start={StartTimestamp}&timeIntervals.timeRange.end={EndTimestamp}";
+                                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId, "StartTimestamp", startTimestamp, "EndTimestamp", endTimestamp);
 
                                                     var context = new RequestContext();
                                                     context.UserAuthorization = user;
                                                     context.Method =  "POST";
                                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                    // Requires for GET post tunneling
+                                                    this.CreateTunnelingPostStream(context, query);
 
                                                     if (!this.ExecuteQuery(context))
                                                         this.HandleJsonErrorResponse(context);
@@ -8492,14 +8688,23 @@ namespace Sparkle.LinkedInNET.Shares
                                                     /// </remarks>
                                                     public async Task<Shares.PostStatistic> GetSharePostStatisticsPerDayAsync(
                                                           UserAuthorization user 
+                                                        , string companyId 
+                                                        , string shareId 
+                                                        , string startTimestamp 
+                                                        , string endTimestamp 
                                                     )
                                                     {
+                                                        string skipUrlParamsEscape = "";
                                                         var url = "/v2/organizationalEntityShareStatistics";
+                                                        string queryFormat = "q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]={ShareId}&timeIntervals.timeGranularityType=DAY&timeIntervals.timeRange.start={StartTimestamp}&timeIntervals.timeRange.end={EndTimestamp}";
+                                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId, "StartTimestamp", startTimestamp, "EndTimestamp", endTimestamp);
 
                                                         var context = new RequestContext();
                                                         context.UserAuthorization = user;
                                                         context.Method =  "POST";
                                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                        // Requires for GET post tunneling
+                                                        this.CreateTunnelingPostStream(context, query);
 
                                                         var exec = await this.ExecuteQueryAsync(context);
                                                         if (!exec)
@@ -8517,14 +8722,23 @@ namespace Sparkle.LinkedInNET.Shares
                                                         /// </remarks>
                                                         public Shares.PostShares GetShares(
                                                               UserAuthorization user 
+                                                            , string urn 
+                                                            , int sharesPerOwner = 1000
+                                                            , int count = 50
+                                                            , int start = 0
                                                         )
                                                         {
+                                                            string skipUrlParamsEscape = "";
                                                             var url = "/v2/shares";
+                                                            string queryFormat = "q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
+                                                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
 
                                                             var context = new RequestContext();
                                                             context.UserAuthorization = user;
                                                             context.Method =  "POST";
                                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                            // Requires for GET post tunneling
+                                                            this.CreateTunnelingPostStream(context, query);
 
                                                             if (!this.ExecuteQuery(context))
                                                                 this.HandleJsonErrorResponse(context);
@@ -8541,14 +8755,23 @@ namespace Sparkle.LinkedInNET.Shares
                                                             /// </remarks>
                                                             public async Task<Shares.PostShares> GetSharesAsync(
                                                                   UserAuthorization user 
+                                                                , string urn 
+                                                                , int sharesPerOwner = 1000
+                                                                , int count = 50
+                                                                , int start = 0
                                                             )
                                                             {
+                                                                string skipUrlParamsEscape = "";
                                                                 var url = "/v2/shares";
+                                                                string queryFormat = "q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
+                                                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
 
                                                                 var context = new RequestContext();
                                                                 context.UserAuthorization = user;
                                                                 context.Method =  "POST";
                                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                // Requires for GET post tunneling
+                                                                this.CreateTunnelingPostStream(context, query);
 
                                                                 var exec = await this.ExecuteQueryAsync(context);
                                                                 if (!exec)
@@ -8589,14 +8812,22 @@ namespace Sparkle.LinkedInNET.Videos
                 /// </remarks>
                 public Videos.VideoAnalytics GetVideoStatistics(
                       UserAuthorization user 
+                    , string videoPostId 
+                    , string type 
+                    , string aggregation 
                 )
                 {
+                    string skipUrlParamsEscape = "";
                     var url = "/v2/videoAnalytics";
+                    string queryFormat = "q=entity&entity={videoPostId}&type={type}&aggregation={aggregation}";
+                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "videoPostId", videoPostId, "type", type, "aggregation", aggregation);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
                     context.Method =  "POST";
                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    // Requires for GET post tunneling
+                    this.CreateTunnelingPostStream(context, query);
 
                     if (!this.ExecuteQuery(context))
                         this.HandleJsonErrorResponse(context);
@@ -8613,14 +8844,22 @@ namespace Sparkle.LinkedInNET.Videos
                     /// </remarks>
                     public async Task<Videos.VideoAnalytics> GetVideoStatisticsAsync(
                           UserAuthorization user 
+                        , string videoPostId 
+                        , string type 
+                        , string aggregation 
                     )
                     {
+                        string skipUrlParamsEscape = "";
                         var url = "/v2/videoAnalytics";
+                        string queryFormat = "q=entity&entity={videoPostId}&type={type}&aggregation={aggregation}";
+                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "videoPostId", videoPostId, "type", type, "aggregation", aggregation);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
                         context.Method =  "POST";
                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        // Requires for GET post tunneling
+                        this.CreateTunnelingPostStream(context, query);
 
                         var exec = await this.ExecuteQueryAsync(context);
                         if (!exec)
@@ -8804,14 +9043,22 @@ namespace Sparkle.LinkedInNET.UGCPost
                         /// </remarks>
                         public UGCPost.UGCPostItems GetUGCPosts(
                               UserAuthorization user 
+                            , string urn 
+                            , int start = 0
+                            , int count = 50
                         )
                         {
+                            string skipUrlParamsEscape = "";
                             var url = "/v2/ugcPosts";
+                            string queryFormat = "q=authors&authors=List({urn})&start={int Start = 0}&count={int Count = 50}";
+                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int Start = 0", start, "int Count = 50", count);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
                             context.Method =  "POST";
                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                            // Requires for GET post tunneling
+                            this.CreateTunnelingPostStream(context, query);
 
                             if (!this.ExecuteQuery(context))
                                 this.HandleJsonErrorResponse(context);
@@ -8828,14 +9075,22 @@ namespace Sparkle.LinkedInNET.UGCPost
                             /// </remarks>
                             public async Task<UGCPost.UGCPostItems> GetUGCPostsAsync(
                                   UserAuthorization user 
+                                , string urn 
+                                , int start = 0
+                                , int count = 50
                             )
                             {
+                                string skipUrlParamsEscape = "";
                                 var url = "/v2/ugcPosts";
+                                string queryFormat = "q=authors&authors=List({urn})&start={int Start = 0}&count={int Count = 50}";
+                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int Start = 0", start, "int Count = 50", count);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
                                 context.Method =  "POST";
                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                // Requires for GET post tunneling
+                                this.CreateTunnelingPostStream(context, query);
 
                                 var exec = await this.ExecuteQueryAsync(context);
                                 if (!exec)
@@ -8856,8 +9111,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                                     , string urn 
                                 )
                                 {
-                                    string urlFormat = "/v2/ugcPosts/{urn}";
                                     string skipUrlParamsEscape = "";
+                                    string urlFormat = "/v2/ugcPosts/{urn}";
                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                     var context = new RequestContext();
@@ -8883,8 +9138,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                                         , string urn 
                                     )
                                     {
-                                        string urlFormat = "/v2/ugcPosts/{urn}";
                                         string skipUrlParamsEscape = "";
+                                        string urlFormat = "/v2/ugcPosts/{urn}";
                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                         var context = new RequestContext();
@@ -8911,8 +9166,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                                             , string urn 
                                         )
                                         {
-                                            string urlFormat = "/v2/ugcPosts/{urn}";
                                             string skipUrlParamsEscape = "";
+                                            string urlFormat = "/v2/ugcPosts/{urn}";
                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                             var context = new RequestContext();
@@ -8938,8 +9193,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                                                 , string urn 
                                             )
                                             {
-                                                string urlFormat = "/v2/ugcPosts/{urn}";
                                                 string skipUrlParamsEscape = "";
+                                                string urlFormat = "/v2/ugcPosts/{urn}";
                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                 var context = new RequestContext();
@@ -8966,14 +9221,17 @@ namespace Sparkle.LinkedInNET.UGCPost
                                                     , string urn 
                                                 )
                                                 {
-                                                    string urlFormat = "/v2/ugcPosts/{urn}";
                                                     string skipUrlParamsEscape = "";
+                                                    string urlFormat = "/v2/ugcPosts/{urn}";
                                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+                                                    var query = "viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
 
                                                     var context = new RequestContext();
                                                     context.UserAuthorization = user;
                                                     context.Method =  "POST";
                                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                    // Requires for GET post tunneling
+                                                    this.CreateTunnelingPostStream(context, query);
 
                                                     if (!this.ExecuteQuery(context))
                                                         this.HandleJsonErrorResponse(context);
@@ -8993,14 +9251,17 @@ namespace Sparkle.LinkedInNET.UGCPost
                                                         , string urn 
                                                     )
                                                     {
-                                                        string urlFormat = "/v2/ugcPosts/{urn}";
                                                         string skipUrlParamsEscape = "";
+                                                        string urlFormat = "/v2/ugcPosts/{urn}";
                                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+                                                        var query = "viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
 
                                                         var context = new RequestContext();
                                                         context.UserAuthorization = user;
                                                         context.Method =  "POST";
                                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                        // Requires for GET post tunneling
+                                                        this.CreateTunnelingPostStream(context, query);
 
                                                         var exec = await this.ExecuteQueryAsync(context);
                                                         if (!exec)
@@ -9042,16 +9303,22 @@ namespace Sparkle.LinkedInNET.SocialActions
                 public SocialActions.Comments GetCommentsByUrn(
                       UserAuthorization user 
                     , string urn 
+                    , int count = 50
+                    , int start = 0
                 )
                 {
-                    string urlFormat = "/v2/socialActions/{urn}/comments";
                     string skipUrlParamsEscape = "urn";
+                    string urlFormat = "/v2/socialActions/{urn}/comments";
                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+                    string queryFormat = "count={int Count = 50}&start={int Start = 0}";
+                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "int Count = 50", count, "int Start = 0", start);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
                     context.Method =  "POST";
                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    // Requires for GET post tunneling
+                    this.CreateTunnelingPostStream(context, query);
 
                     if (!this.ExecuteQuery(context))
                         this.HandleJsonErrorResponse(context);
@@ -9069,16 +9336,22 @@ namespace Sparkle.LinkedInNET.SocialActions
                     public async Task<SocialActions.Comments> GetCommentsByUrnAsync(
                           UserAuthorization user 
                         , string urn 
+                        , int count = 50
+                        , int start = 0
                     )
                     {
-                        string urlFormat = "/v2/socialActions/{urn}/comments";
                         string skipUrlParamsEscape = "urn";
+                        string urlFormat = "/v2/socialActions/{urn}/comments";
                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+                        string queryFormat = "count={int Count = 50}&start={int Start = 0}";
+                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "int Count = 50", count, "int Start = 0", start);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
                         context.Method =  "POST";
                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        // Requires for GET post tunneling
+                        this.CreateTunnelingPostStream(context, query);
 
                         var exec = await this.ExecuteQueryAsync(context);
                         if (!exec)
@@ -9097,16 +9370,22 @@ namespace Sparkle.LinkedInNET.SocialActions
                         public SocialActions.Comments GetCommentsOnShare(
                               UserAuthorization user 
                             , string shareId 
+                            , int count = 50
+                            , int start = 0
                         )
                         {
-                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                             string skipUrlParamsEscape = "";
+                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
+                            string queryFormat = "count={int Count = 50}&start={int Start = 0}";
+                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "int Count = 50", count, "int Start = 0", start);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
                             context.Method =  "POST";
                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                            // Requires for GET post tunneling
+                            this.CreateTunnelingPostStream(context, query);
 
                             if (!this.ExecuteQuery(context))
                                 this.HandleJsonErrorResponse(context);
@@ -9124,16 +9403,22 @@ namespace Sparkle.LinkedInNET.SocialActions
                             public async Task<SocialActions.Comments> GetCommentsOnShareAsync(
                                   UserAuthorization user 
                                 , string shareId 
+                                , int count = 50
+                                , int start = 0
                             )
                             {
-                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                                 string skipUrlParamsEscape = "";
+                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
+                                string queryFormat = "count={int Count = 50}&start={int Start = 0}";
+                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "int Count = 50", count, "int Start = 0", start);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
                                 context.Method =  "POST";
                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                // Requires for GET post tunneling
+                                this.CreateTunnelingPostStream(context, query);
 
                                 var exec = await this.ExecuteQueryAsync(context);
                                 if (!exec)
@@ -9152,16 +9437,22 @@ namespace Sparkle.LinkedInNET.SocialActions
                                 public SocialActions.Comments GetCommentsOnUGCPost(
                                       UserAuthorization user 
                                     , string postId 
+                                    , int count = 50
+                                    , int start = 0
                                 )
                                 {
-                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                     string skipUrlParamsEscape = "";
+                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
+                                    string queryFormat = "count={int Count = 50}&start={int Start = 0}";
+                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "int Count = 50", count, "int Start = 0", start);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
                                     context.Method =  "POST";
                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                    // Requires for GET post tunneling
+                                    this.CreateTunnelingPostStream(context, query);
 
                                     if (!this.ExecuteQuery(context))
                                         this.HandleJsonErrorResponse(context);
@@ -9179,16 +9470,22 @@ namespace Sparkle.LinkedInNET.SocialActions
                                     public async Task<SocialActions.Comments> GetCommentsOnUGCPostAsync(
                                           UserAuthorization user 
                                         , string postId 
+                                        , int count = 50
+                                        , int start = 0
                                     )
                                     {
-                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                         string skipUrlParamsEscape = "";
+                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
+                                        string queryFormat = "count={int Count = 50}&start={int Start = 0}";
+                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "int Count = 50", count, "int Start = 0", start);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
                                         context.Method =  "POST";
                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                        // Requires for GET post tunneling
+                                        this.CreateTunnelingPostStream(context, query);
 
                                         var exec = await this.ExecuteQueryAsync(context);
                                         if (!exec)
@@ -9207,16 +9504,22 @@ namespace Sparkle.LinkedInNET.SocialActions
                                         public SocialActions.Comments GetCommentsOnComment(
                                               UserAuthorization user 
                                             , string commentId 
+                                            , int count = 50
+                                            , int start = 0
                                         )
                                         {
-                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                             string skipUrlParamsEscape = "CommentId";
+                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
+                                            string queryFormat = "count={int Count = 50}&start={int Start = 0}";
+                                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "int Count = 50", count, "int Start = 0", start);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
                                             context.Method =  "POST";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                            // Requires for GET post tunneling
+                                            this.CreateTunnelingPostStream(context, query);
 
                                             if (!this.ExecuteQuery(context))
                                                 this.HandleJsonErrorResponse(context);
@@ -9234,16 +9537,22 @@ namespace Sparkle.LinkedInNET.SocialActions
                                             public async Task<SocialActions.Comments> GetCommentsOnCommentAsync(
                                                   UserAuthorization user 
                                                 , string commentId 
+                                                , int count = 50
+                                                , int start = 0
                                             )
                                             {
-                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                                 string skipUrlParamsEscape = "CommentId";
+                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
+                                                string queryFormat = "count={int Count = 50}&start={int Start = 0}";
+                                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "int Count = 50", count, "int Start = 0", start);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
                                                 context.Method =  "POST";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                // Requires for GET post tunneling
+                                                this.CreateTunnelingPostStream(context, query);
 
                                                 var exec = await this.ExecuteQueryAsync(context);
                                                 if (!exec)
@@ -9265,8 +9574,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                     , SocialActions.CreateFirstLevelCommentRequest postData
                                                 )
                                                 {
-                                                    string urlFormat = "/v2/socialActions/{urn}/comments";
                                                     string skipUrlParamsEscape = "urn";
+                                                    string urlFormat = "/v2/socialActions/{urn}/comments";
                                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                     var context = new RequestContext();
@@ -9294,8 +9603,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                         , SocialActions.CreateFirstLevelCommentRequest postData
                                                     )
                                                     {
-                                                        string urlFormat = "/v2/socialActions/{urn}/comments";
                                                         string skipUrlParamsEscape = "urn";
+                                                        string urlFormat = "/v2/socialActions/{urn}/comments";
                                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                         var context = new RequestContext();
@@ -9324,8 +9633,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                             , SocialActions.CreateCommentRequest postData
                                                         )
                                                         {
-                                                            string urlFormat = "/v2/socialActions/{urn}/comments";
                                                             string skipUrlParamsEscape = "urn";
+                                                            string urlFormat = "/v2/socialActions/{urn}/comments";
                                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                             var context = new RequestContext();
@@ -9353,8 +9662,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                 , SocialActions.CreateCommentRequest postData
                                                             )
                                                             {
-                                                                string urlFormat = "/v2/socialActions/{urn}/comments";
                                                                 string skipUrlParamsEscape = "urn";
+                                                                string urlFormat = "/v2/socialActions/{urn}/comments";
                                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                                 var context = new RequestContext();
@@ -9383,8 +9692,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                     , SocialActions.CreateCommentRequest postData
                                                                 )
                                                                 {
-                                                                    string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                                                                     string skipUrlParamsEscape = "";
+                                                                    string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                                                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
 
                                                                     var context = new RequestContext();
@@ -9412,8 +9721,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                         , SocialActions.CreateCommentRequest postData
                                                                     )
                                                                     {
-                                                                        string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                                                                         string skipUrlParamsEscape = "";
+                                                                        string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                                                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
 
                                                                         var context = new RequestContext();
@@ -9442,8 +9751,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                             , SocialActions.CreateCommentRequest postData
                                                                         )
                                                                         {
-                                                                            string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                                                             string skipUrlParamsEscape = "";
+                                                                            string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
 
                                                                             var context = new RequestContext();
@@ -9471,8 +9780,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                 , SocialActions.CreateCommentRequest postData
                                                                             )
                                                                             {
-                                                                                string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                                                                 string skipUrlParamsEscape = "";
+                                                                                string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
 
                                                                                 var context = new RequestContext();
@@ -9501,8 +9810,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                     , SocialActions.CreateCommentRequest postData
                                                                                 )
                                                                                 {
-                                                                                    string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                                                                     string skipUrlParamsEscape = "CommentId";
+                                                                                    string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                                                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
 
                                                                                     var context = new RequestContext();
@@ -9530,8 +9839,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                         , SocialActions.CreateCommentRequest postData
                                                                                     )
                                                                                     {
-                                                                                        string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                                                                         string skipUrlParamsEscape = "CommentId";
+                                                                                        string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                                                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
 
                                                                                         var context = new RequestContext();
@@ -9560,8 +9869,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                             , SocialActions.CreateLikeRequest postData
                                                                                         )
                                                                                         {
-                                                                                            string urlFormat = "/v2/socialActions/{urn}/likes";
                                                                                             string skipUrlParamsEscape = "urn";
+                                                                                            string urlFormat = "/v2/socialActions/{urn}/likes";
                                                                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                                                             var context = new RequestContext();
@@ -9589,8 +9898,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                 , SocialActions.CreateLikeRequest postData
                                                                                             )
                                                                                             {
-                                                                                                string urlFormat = "/v2/socialActions/{urn}/likes";
                                                                                                 string skipUrlParamsEscape = "urn";
+                                                                                                string urlFormat = "/v2/socialActions/{urn}/likes";
                                                                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                                                                 var context = new RequestContext();
@@ -9620,8 +9929,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                     , string creatorActorUrn 
                                                                                                 )
                                                                                                 {
-                                                                                                    string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
                                                                                                     string skipUrlParamsEscape = "urn,actorUrn";
+                                                                                                    string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
                                                                                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
 
                                                                                                     var context = new RequestContext();
@@ -9649,8 +9958,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                         , string creatorActorUrn 
                                                                                                     )
                                                                                                     {
-                                                                                                        string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
                                                                                                         string skipUrlParamsEscape = "urn,actorUrn";
+                                                                                                        string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
                                                                                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
 
                                                                                                         var context = new RequestContext();
@@ -9679,8 +9988,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                             , string actorUrn 
                                                                                                         )
                                                                                                         {
-                                                                                                            string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
                                                                                                             string skipUrlParamsEscape = "urn";
+                                                                                                            string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
                                                                                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "commentId", commentId, "actorUrn", actorUrn);
 
                                                                                                             var context = new RequestContext();
@@ -9708,8 +10017,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                                 , string actorUrn 
                                                                                                             )
                                                                                                             {
-                                                                                                                string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
                                                                                                                 string skipUrlParamsEscape = "urn";
+                                                                                                                string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
                                                                                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "commentId", commentId, "actorUrn", actorUrn);
 
                                                                                                                 var context = new RequestContext();
@@ -9812,8 +10121,8 @@ namespace Sparkle.LinkedInNET.Asset
                             , Asset.UploadAssetRequest postData
                         )
                         {
-                            string urlFormat = "{UploadUrl}";
                             string skipUrlParamsEscape = "";
+                            string urlFormat = "{UploadUrl}";
                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "UploadUrl", uploadUrl);
 
                             var context = new RequestContext();
@@ -9846,8 +10155,8 @@ namespace Sparkle.LinkedInNET.Asset
                                 , Asset.UploadAssetRequest postData
                             )
                             {
-                                string urlFormat = "{UploadUrl}";
                                 string skipUrlParamsEscape = "";
+                                string urlFormat = "{UploadUrl}";
                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "UploadUrl", uploadUrl);
 
                                 var context = new RequestContext();
@@ -9882,8 +10191,8 @@ namespace Sparkle.LinkedInNET.Asset
                                     , Asset.UploadAssetRequest postData
                                 )
                                 {
-                                    string urlFormat = "{UploadUrl}";
                                     string skipUrlParamsEscape = "";
+                                    string urlFormat = "{UploadUrl}";
                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "UploadUrl", uploadUrl);
 
                                     var context = new RequestContext();
@@ -9911,8 +10220,8 @@ namespace Sparkle.LinkedInNET.Asset
                                         , Asset.UploadAssetRequest postData
                                     )
                                     {
-                                        string urlFormat = "{UploadUrl}";
                                         string skipUrlParamsEscape = "";
+                                        string urlFormat = "{UploadUrl}";
                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "UploadUrl", uploadUrl);
 
                                         var context = new RequestContext();
@@ -9940,8 +10249,8 @@ namespace Sparkle.LinkedInNET.Asset
                                             , string assetId 
                                         )
                                         {
-                                            string urlFormat = "/v2/assets/{AssetId}";
                                             string skipUrlParamsEscape = "";
+                                            string urlFormat = "/v2/assets/{AssetId}";
                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "AssetId", assetId);
 
                                             var context = new RequestContext();
@@ -9967,8 +10276,8 @@ namespace Sparkle.LinkedInNET.Asset
                                                 , string assetId 
                                             )
                                             {
-                                                string urlFormat = "/v2/assets/{AssetId}";
                                                 string skipUrlParamsEscape = "";
+                                                string urlFormat = "/v2/assets/{AssetId}";
                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "AssetId", assetId);
 
                                                 var context = new RequestContext();
@@ -10064,18 +10373,27 @@ namespace Sparkle.LinkedInNET.Targeting
                 /// Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names.
                 /// </summary>
                 /// <remarks>
-                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL
+                /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/industries
                 /// </remarks>
                 public Targeting.Industries GetIndustries(
                       UserAuthorization user 
+                    , string dataLanguage 
+                    , string dataCountry 
+                    , int count = 50
+                    , int start = 0
                 )
                 {
+                    string skipUrlParamsEscape = "";
                     var url = "/v2/industries";
+                    string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
+                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
                     context.Method =  "POST";
                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    // Requires for GET post tunneling
+                    this.CreateTunnelingPostStream(context, query);
 
                     if (!this.ExecuteQuery(context))
                         this.HandleJsonErrorResponse(context);
@@ -10088,18 +10406,27 @@ namespace Sparkle.LinkedInNET.Targeting
                     /// Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names.
                     /// </summary>
                     /// <remarks>
-                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL
+                    /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/industries
                     /// </remarks>
                     public async Task<Targeting.Industries> GetIndustriesAsync(
                           UserAuthorization user 
+                        , string dataLanguage 
+                        , string dataCountry 
+                        , int count = 50
+                        , int start = 0
                     )
                     {
+                        string skipUrlParamsEscape = "";
                         var url = "/v2/industries";
+                        string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
+                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
                         context.Method =  "POST";
                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        // Requires for GET post tunneling
+                        this.CreateTunnelingPostStream(context, query);
 
                         var exec = await this.ExecuteQueryAsync(context);
                         if (!exec)
@@ -10113,18 +10440,26 @@ namespace Sparkle.LinkedInNET.Targeting
                         /// 
                         /// </summary>
                         /// <remarks>
-                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US
+                        /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/functions  locale e.g.: en_US
                         /// </remarks>
                         public Targeting.JobFunctions GetJobFunctions(
                               UserAuthorization user 
+                            , string dataLocale 
+                            , int count = 50
+                            , int start = 0
                         )
                         {
+                            string skipUrlParamsEscape = "";
                             var url = "/v2/functions";
+                            string queryFormat = "locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
+                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
                             context.Method =  "POST";
                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                            // Requires for GET post tunneling
+                            this.CreateTunnelingPostStream(context, query);
 
                             if (!this.ExecuteQuery(context))
                                 this.HandleJsonErrorResponse(context);
@@ -10137,18 +10472,26 @@ namespace Sparkle.LinkedInNET.Targeting
                             /// 
                             /// </summary>
                             /// <remarks>
-                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US
+                            /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/functions  locale e.g.: en_US
                             /// </remarks>
                             public async Task<Targeting.JobFunctions> GetJobFunctionsAsync(
                                   UserAuthorization user 
+                                , string dataLocale 
+                                , int count = 50
+                                , int start = 0
                             )
                             {
+                                string skipUrlParamsEscape = "";
                                 var url = "/v2/functions";
+                                string queryFormat = "locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
+                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
                                 context.Method =  "POST";
                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                // Requires for GET post tunneling
+                                this.CreateTunnelingPostStream(context, query);
 
                                 var exec = await this.ExecuteQueryAsync(context);
                                 if (!exec)
@@ -10162,18 +10505,27 @@ namespace Sparkle.LinkedInNET.Targeting
                                 /// 
                                 /// </summary>
                                 /// <remarks>
-                                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups
+                                /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/country-groups
                                 /// </remarks>
                                 public Targeting.CountryGroups GetCountryGroups(
                                       UserAuthorization user 
+                                    , string dataLanguage 
+                                    , string dataCountry 
+                                    , int count = 50
+                                    , int start = 0
                                 )
                                 {
+                                    string skipUrlParamsEscape = "";
                                     var url = "/v2/countryGroups";
+                                    string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
                                     context.Method =  "POST";
                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                    // Requires for GET post tunneling
+                                    this.CreateTunnelingPostStream(context, query);
 
                                     if (!this.ExecuteQuery(context))
                                         this.HandleJsonErrorResponse(context);
@@ -10186,18 +10538,27 @@ namespace Sparkle.LinkedInNET.Targeting
                                     /// 
                                     /// </summary>
                                     /// <remarks>
-                                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups
+                                    /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/country-groups
                                     /// </remarks>
                                     public async Task<Targeting.CountryGroups> GetCountryGroupsAsync(
                                           UserAuthorization user 
+                                        , string dataLanguage 
+                                        , string dataCountry 
+                                        , int count = 50
+                                        , int start = 0
                                     )
                                     {
+                                        string skipUrlParamsEscape = "";
                                         var url = "/v2/countryGroups";
+                                        string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
                                         context.Method =  "POST";
                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                        // Requires for GET post tunneling
+                                        this.CreateTunnelingPostStream(context, query);
 
                                         var exec = await this.ExecuteQueryAsync(context);
                                         if (!exec)
@@ -10211,18 +10572,29 @@ namespace Sparkle.LinkedInNET.Targeting
                                         /// 
                                         /// </summary>
                                         /// <remarks>
-                                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                        /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/countries
                                         /// </remarks>
                                         public Targeting.Countries GetCountries(
                                               UserAuthorization user 
+                                            , string dataLanguage 
+                                            , string dataCountry 
+                                            , string countryGroup 
+                                            , string countryGroupURN 
+                                            , int count = 50
+                                            , int start = 0
                                         )
                                         {
+                                            string skipUrlParamsEscape = "";
                                             var url = "/v2/countries";
+                                            string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
+                                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
                                             context.Method =  "POST";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                            // Requires for GET post tunneling
+                                            this.CreateTunnelingPostStream(context, query);
 
                                             if (!this.ExecuteQuery(context))
                                                 this.HandleJsonErrorResponse(context);
@@ -10235,18 +10607,29 @@ namespace Sparkle.LinkedInNET.Targeting
                                             /// 
                                             /// </summary>
                                             /// <remarks>
-                                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                            /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/countries
                                             /// </remarks>
                                             public async Task<Targeting.Countries> GetCountriesAsync(
                                                   UserAuthorization user 
+                                                , string dataLanguage 
+                                                , string dataCountry 
+                                                , string countryGroup 
+                                                , string countryGroupURN 
+                                                , int count = 50
+                                                , int start = 0
                                             )
                                             {
+                                                string skipUrlParamsEscape = "";
                                                 var url = "/v2/countries";
+                                                string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
+                                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
                                                 context.Method =  "POST";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                // Requires for GET post tunneling
+                                                this.CreateTunnelingPostStream(context, query);
 
                                                 var exec = await this.ExecuteQueryAsync(context);
                                                 if (!exec)
@@ -10260,23 +10643,32 @@ namespace Sparkle.LinkedInNET.Targeting
                                                 /// 
                                                 /// </summary>
                                                 /// <remarks>
-                                                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/geo-typeahead?tabs=http#geo-typeahead
                                                 /// </remarks>
-                                                public Targeting.States GetStates(
+                                                public Targeting.GeoLocations GetGeoLocations(
                                                       UserAuthorization user 
+                                                    , string keyword 
+                                                    , string language 
+                                                    , int count = 50
+                                                    , int start = 0
                                                 )
                                                 {
-                                                    var url = "/v2/states";
+                                                    string skipUrlParamsEscape = "language";
+                                                    var url = "/v2/geoTypeahead";
+                                                    string queryFormat = "q=search&query={keyword}&locale=({language})&count={int Count = 50}&start={int Start = 0}";
+                                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "keyword", keyword, "language", language, "int Count = 50", count, "int Start = 0", start);
 
                                                     var context = new RequestContext();
                                                     context.UserAuthorization = user;
                                                     context.Method =  "POST";
                                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                    // Requires for GET post tunneling
+                                                    this.CreateTunnelingPostStream(context, query);
 
-                                                    if (!this.ExecuteQuery(context))
+                                                    if (!this.ExecuteQuery(context, true))
                                                         this.HandleJsonErrorResponse(context);
                                                     
-                                                    var result = this.HandleJsonResponse<Targeting.States>(context);
+                                                    var result = this.HandleJsonResponse<Targeting.GeoLocations>(context);
                                                     return result;
                                                 }
 
@@ -10284,24 +10676,33 @@ namespace Sparkle.LinkedInNET.Targeting
                                                     /// 
                                                     /// </summary>
                                                     /// <remarks>
-                                                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                    /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/geo-typeahead?tabs=http#geo-typeahead
                                                     /// </remarks>
-                                                    public async Task<Targeting.States> GetStatesAsync(
+                                                    public async Task<Targeting.GeoLocations> GetGeoLocationsAsync(
                                                           UserAuthorization user 
+                                                        , string keyword 
+                                                        , string language 
+                                                        , int count = 50
+                                                        , int start = 0
                                                     )
                                                     {
-                                                        var url = "/v2/states";
+                                                        string skipUrlParamsEscape = "language";
+                                                        var url = "/v2/geoTypeahead";
+                                                        string queryFormat = "q=search&query={keyword}&locale=({language})&count={int Count = 50}&start={int Start = 0}";
+                                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "keyword", keyword, "language", language, "int Count = 50", count, "int Start = 0", start);
 
                                                         var context = new RequestContext();
                                                         context.UserAuthorization = user;
                                                         context.Method =  "POST";
                                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                        // Requires for GET post tunneling
+                                                        this.CreateTunnelingPostStream(context, query);
 
-                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                        var exec = await this.ExecuteQueryAsync(context, true);
                                                         if (!exec)
                                                             this.HandleJsonErrorResponse(context);
                                                         
-                                                        var result = this.HandleJsonResponse<Targeting.States>(context);
+                                                        var result = this.HandleJsonResponse<Targeting.GeoLocations>(context);
                                                         return result;
                                                     }
                                                         
@@ -10309,23 +10710,34 @@ namespace Sparkle.LinkedInNET.Targeting
                                                         /// 
                                                         /// </summary>
                                                         /// <remarks>
-                                                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+                                                        /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/states
                                                         /// </remarks>
-                                                        public Targeting.Regions GetRegions(
+                                                        public Targeting.States GetStates(
                                                               UserAuthorization user 
+                                                            , string dataLanguage 
+                                                            , string dataCountry 
+                                                            , string country 
+                                                            , string countryURN 
+                                                            , int count = 50
+                                                            , int start = 0
                                                         )
                                                         {
-                                                            var url = "/v2/regions";
+                                                            string skipUrlParamsEscape = "";
+                                                            var url = "/v2/states";
+                                                            string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
+                                                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
 
                                                             var context = new RequestContext();
                                                             context.UserAuthorization = user;
                                                             context.Method =  "POST";
                                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                            // Requires for GET post tunneling
+                                                            this.CreateTunnelingPostStream(context, query);
 
                                                             if (!this.ExecuteQuery(context))
                                                                 this.HandleJsonErrorResponse(context);
                                                             
-                                                            var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                            var result = this.HandleJsonResponse<Targeting.States>(context);
                                                             return result;
                                                         }
 
@@ -10333,24 +10745,35 @@ namespace Sparkle.LinkedInNET.Targeting
                                                             /// 
                                                             /// </summary>
                                                             /// <remarks>
-                                                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+                                                            /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/states
                                                             /// </remarks>
-                                                            public async Task<Targeting.Regions> GetRegionsAsync(
+                                                            public async Task<Targeting.States> GetStatesAsync(
                                                                   UserAuthorization user 
+                                                                , string dataLanguage 
+                                                                , string dataCountry 
+                                                                , string country 
+                                                                , string countryURN 
+                                                                , int count = 50
+                                                                , int start = 0
                                                             )
                                                             {
-                                                                var url = "/v2/regions";
+                                                                string skipUrlParamsEscape = "";
+                                                                var url = "/v2/states";
+                                                                string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
+                                                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
 
                                                                 var context = new RequestContext();
                                                                 context.UserAuthorization = user;
                                                                 context.Method =  "POST";
                                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                // Requires for GET post tunneling
+                                                                this.CreateTunnelingPostStream(context, query);
 
                                                                 var exec = await this.ExecuteQueryAsync(context);
                                                                 if (!exec)
                                                                     this.HandleJsonErrorResponse(context);
                                                                 
-                                                                var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                                var result = this.HandleJsonResponse<Targeting.States>(context);
                                                                 return result;
                                                             }
                                                                 
@@ -10358,23 +10781,34 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                 /// 
                                                                 /// </summary>
                                                                 /// <remarks>
-                                                                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities
+                                                                /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/regions
                                                                 /// </remarks>
-                                                                public Targeting.Seniorities GetSeniorities(
+                                                                public Targeting.Regions GetRegions(
                                                                       UserAuthorization user 
+                                                                    , string dataLanguage 
+                                                                    , string dataCountry 
+                                                                    , string states 
+                                                                    , string statesURN 
+                                                                    , int count = 50
+                                                                    , int start = 0
                                                                 )
                                                                 {
-                                                                    var url = "/v2/seniorities";
+                                                                    string skipUrlParamsEscape = "";
+                                                                    var url = "/v2/regions";
+                                                                    string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
+                                                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
 
                                                                     var context = new RequestContext();
                                                                     context.UserAuthorization = user;
                                                                     context.Method =  "POST";
                                                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                    // Requires for GET post tunneling
+                                                                    this.CreateTunnelingPostStream(context, query);
 
                                                                     if (!this.ExecuteQuery(context))
                                                                         this.HandleJsonErrorResponse(context);
                                                                     
-                                                                    var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
+                                                                    var result = this.HandleJsonResponse<Targeting.Regions>(context);
                                                                     return result;
                                                                 }
 
@@ -10382,171 +10816,212 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                     /// 
                                                                     /// </summary>
                                                                     /// <remarks>
-                                                                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities
+                                                                    /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/regions
                                                                     /// </remarks>
-                                                                    public async Task<Targeting.Seniorities> GetSenioritiesAsync(
+                                                                    public async Task<Targeting.Regions> GetRegionsAsync(
                                                                           UserAuthorization user 
+                                                                        , string dataLanguage 
+                                                                        , string dataCountry 
+                                                                        , string states 
+                                                                        , string statesURN 
+                                                                        , int count = 50
+                                                                        , int start = 0
                                                                     )
                                                                     {
-                                                                        var url = "/v2/seniorities";
+                                                                        string skipUrlParamsEscape = "";
+                                                                        var url = "/v2/regions";
+                                                                        string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
+                                                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
 
                                                                         var context = new RequestContext();
                                                                         context.UserAuthorization = user;
                                                                         context.Method =  "POST";
                                                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                        // Requires for GET post tunneling
+                                                                        this.CreateTunnelingPostStream(context, query);
 
                                                                         var exec = await this.ExecuteQueryAsync(context);
                                                                         if (!exec)
                                                                             this.HandleJsonErrorResponse(context);
                                                                         
-                                                                        var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
+                                                                        var result = this.HandleJsonResponse<Targeting.Regions>(context);
                                                                         return result;
                                                                     }
                                                                         
                                                                         /// <summary>
-                                                                        /// Forecast the reach of the target audience
+                                                                        /// 
                                                                         /// </summary>
                                                                         /// <remarks>
-                                                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
+                                                                        /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/seniorities
                                                                         /// </remarks>
-                                                                        public Targeting.AudienceCounts GetAudienceCounts(
+                                                                        public Targeting.Seniorities GetSeniorities(
                                                                               UserAuthorization user 
+                                                                            , string dataLanguage 
+                                                                            , string dataCountry 
+                                                                            , int count = 50
+                                                                            , int start = 0
                                                                         )
                                                                         {
-                                                                            var url = "/v2/audienceCountsV2";
+                                                                            string skipUrlParamsEscape = "";
+                                                                            var url = "/v2/seniorities";
+                                                                            string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+                                                                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                                                                             var context = new RequestContext();
                                                                             context.UserAuthorization = user;
                                                                             context.Method =  "POST";
                                                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                            // Requires for GET post tunneling
+                                                                            this.CreateTunnelingPostStream(context, query);
 
-                                                                            if (!this.ExecuteQuery(context, true))
+                                                                            if (!this.ExecuteQuery(context))
                                                                                 this.HandleJsonErrorResponse(context);
                                                                             
-                                                                            var result = this.HandleJsonResponse<Targeting.AudienceCounts>(context);
+                                                                            var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
                                                                             return result;
                                                                         }
 
                                                                             /// <summary>
-                                                                            /// Forecast the reach of the target audience
+                                                                            /// 
                                                                             /// </summary>
                                                                             /// <remarks>
-                                                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
+                                                                            /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/seniorities
                                                                             /// </remarks>
-                                                                            public async Task<Targeting.AudienceCounts> GetAudienceCountsAsync(
+                                                                            public async Task<Targeting.Seniorities> GetSenioritiesAsync(
                                                                                   UserAuthorization user 
+                                                                                , string dataLanguage 
+                                                                                , string dataCountry 
+                                                                                , int count = 50
+                                                                                , int start = 0
                                                                             )
                                                                             {
-                                                                                var url = "/v2/audienceCountsV2";
+                                                                                string skipUrlParamsEscape = "";
+                                                                                var url = "/v2/seniorities";
+                                                                                string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+                                                                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                                                                                 var context = new RequestContext();
                                                                                 context.UserAuthorization = user;
                                                                                 context.Method =  "POST";
                                                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                // Requires for GET post tunneling
+                                                                                this.CreateTunnelingPostStream(context, query);
 
-                                                                                var exec = await this.ExecuteQueryAsync(context, true);
+                                                                                var exec = await this.ExecuteQueryAsync(context);
                                                                                 if (!exec)
                                                                                     this.HandleJsonErrorResponse(context);
                                                                                 
-                                                                                var result = this.HandleJsonResponse<Targeting.AudienceCounts>(context);
+                                                                                var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
                                                                                 return result;
                                                                             }
                                                                                 
                                                                                 /// <summary>
-                                                                                /// Forecast the reach of your target audience
+                                                                                /// Forecast the reach of the target audience
                                                                                 /// </summary>
                                                                                 /// <remarks>
                                                                                 /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
                                                                                 /// </remarks>
-                                                                                public Targeting.TargetingFacets GetTargetingFacets(
+                                                                                public Targeting.AudienceCounts GetAudienceCounts(
                                                                                       UserAuthorization user 
+                                                                                    , string targetingCriteria 
                                                                                 )
                                                                                 {
-                                                                                    var url = "/v2/adTargetingFacets";
+                                                                                    string skipUrlParamsEscape = "targetingCriteria";
+                                                                                    var url = "/v2/audienceCountsV2";
+                                                                                    string queryFormat = "q=targetingCriteriaV2&targetingCriteria={targetingCriteria}";
+                                                                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "targetingCriteria", targetingCriteria);
 
                                                                                     var context = new RequestContext();
                                                                                     context.UserAuthorization = user;
-                                                                                    context.Method =  "GET";
+                                                                                    context.Method =  "POST";
                                                                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                    // Requires for GET post tunneling
+                                                                                    this.CreateTunnelingPostStream(context, query);
 
-                                                                                    if (!this.ExecuteQuery(context))
+                                                                                    if (!this.ExecuteQuery(context, true))
                                                                                         this.HandleJsonErrorResponse(context);
                                                                                     
-                                                                                    var result = this.HandleJsonResponse<Targeting.TargetingFacets>(context);
+                                                                                    var result = this.HandleJsonResponse<Targeting.AudienceCounts>(context);
                                                                                     return result;
                                                                                 }
 
                                                                                     /// <summary>
-                                                                                    /// Forecast the reach of your target audience
+                                                                                    /// Forecast the reach of the target audience
                                                                                     /// </summary>
                                                                                     /// <remarks>
                                                                                     /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
                                                                                     /// </remarks>
-                                                                                    public async Task<Targeting.TargetingFacets> GetTargetingFacetsAsync(
+                                                                                    public async Task<Targeting.AudienceCounts> GetAudienceCountsAsync(
                                                                                           UserAuthorization user 
+                                                                                        , string targetingCriteria 
                                                                                     )
                                                                                     {
-                                                                                        var url = "/v2/adTargetingFacets";
+                                                                                        string skipUrlParamsEscape = "targetingCriteria";
+                                                                                        var url = "/v2/audienceCountsV2";
+                                                                                        string queryFormat = "q=targetingCriteriaV2&targetingCriteria={targetingCriteria}";
+                                                                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "targetingCriteria", targetingCriteria);
 
                                                                                         var context = new RequestContext();
                                                                                         context.UserAuthorization = user;
-                                                                                        context.Method =  "GET";
+                                                                                        context.Method =  "POST";
                                                                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                        // Requires for GET post tunneling
+                                                                                        this.CreateTunnelingPostStream(context, query);
 
-                                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                                        var exec = await this.ExecuteQueryAsync(context, true);
                                                                                         if (!exec)
                                                                                             this.HandleJsonErrorResponse(context);
                                                                                         
-                                                                                        var result = this.HandleJsonResponse<Targeting.TargetingFacets>(context);
+                                                                                        var result = this.HandleJsonResponse<Targeting.AudienceCounts>(context);
                                                                                         return result;
                                                                                     }
                                                                                         
                                                                                         /// <summary>
-                                                                                        /// 
+                                                                                        /// Forecast the reach of your target audience
                                                                                         /// </summary>
                                                                                         /// <remarks>
-                                                                                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
                                                                                         /// </remarks>
-                                                                                        public Targeting.Countries GetAllCountries(
+                                                                                        public Targeting.TargetingFacets GetTargetingFacets(
                                                                                               UserAuthorization user 
                                                                                         )
                                                                                         {
-                                                                                            var url = "/v2/countries";
+                                                                                            var url = "/v2/adTargetingFacets";
 
                                                                                             var context = new RequestContext();
                                                                                             context.UserAuthorization = user;
-                                                                                            context.Method =  "POST";
+                                                                                            context.Method =  "GET";
                                                                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
 
                                                                                             if (!this.ExecuteQuery(context))
                                                                                                 this.HandleJsonErrorResponse(context);
                                                                                             
-                                                                                            var result = this.HandleJsonResponse<Targeting.Countries>(context);
+                                                                                            var result = this.HandleJsonResponse<Targeting.TargetingFacets>(context);
                                                                                             return result;
                                                                                         }
 
                                                                                             /// <summary>
-                                                                                            /// 
+                                                                                            /// Forecast the reach of your target audience
                                                                                             /// </summary>
                                                                                             /// <remarks>
-                                                                                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
                                                                                             /// </remarks>
-                                                                                            public async Task<Targeting.Countries> GetAllCountriesAsync(
+                                                                                            public async Task<Targeting.TargetingFacets> GetTargetingFacetsAsync(
                                                                                                   UserAuthorization user 
                                                                                             )
                                                                                             {
-                                                                                                var url = "/v2/countries";
+                                                                                                var url = "/v2/adTargetingFacets";
 
                                                                                                 var context = new RequestContext();
                                                                                                 context.UserAuthorization = user;
-                                                                                                context.Method =  "POST";
+                                                                                                context.Method =  "GET";
                                                                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
 
                                                                                                 var exec = await this.ExecuteQueryAsync(context);
                                                                                                 if (!exec)
                                                                                                     this.HandleJsonErrorResponse(context);
                                                                                                 
-                                                                                                var result = this.HandleJsonResponse<Targeting.Countries>(context);
+                                                                                                var result = this.HandleJsonResponse<Targeting.TargetingFacets>(context);
                                                                                                 return result;
                                                                                             }
                                                                                                 
@@ -10554,23 +11029,30 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                                                 /// 
                                                                                                 /// </summary>
                                                                                                 /// <remarks>
-                                                                                                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                                                                /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/countries#get-all
                                                                                                 /// </remarks>
-                                                                                                public Targeting.States GetAllStates(
+                                                                                                public Targeting.Countries GetAllCountries(
                                                                                                       UserAuthorization user 
+                                                                                                    , string dataLanguage 
+                                                                                                    , string dataCountry 
                                                                                                 )
                                                                                                 {
-                                                                                                    var url = "/v2/states";
+                                                                                                    string skipUrlParamsEscape = "";
+                                                                                                    var url = "/v2/countries";
+                                                                                                    string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
 
                                                                                                     var context = new RequestContext();
                                                                                                     context.UserAuthorization = user;
                                                                                                     context.Method =  "POST";
                                                                                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                                    // Requires for GET post tunneling
+                                                                                                    this.CreateTunnelingPostStream(context, query);
 
                                                                                                     if (!this.ExecuteQuery(context))
                                                                                                         this.HandleJsonErrorResponse(context);
                                                                                                     
-                                                                                                    var result = this.HandleJsonResponse<Targeting.States>(context);
+                                                                                                    var result = this.HandleJsonResponse<Targeting.Countries>(context);
                                                                                                     return result;
                                                                                                 }
 
@@ -10578,24 +11060,31 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                                                     /// 
                                                                                                     /// </summary>
                                                                                                     /// <remarks>
-                                                                                                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                                                                    /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/countries#get-all
                                                                                                     /// </remarks>
-                                                                                                    public async Task<Targeting.States> GetAllStatesAsync(
+                                                                                                    public async Task<Targeting.Countries> GetAllCountriesAsync(
                                                                                                           UserAuthorization user 
+                                                                                                        , string dataLanguage 
+                                                                                                        , string dataCountry 
                                                                                                     )
                                                                                                     {
-                                                                                                        var url = "/v2/states";
+                                                                                                        string skipUrlParamsEscape = "";
+                                                                                                        var url = "/v2/countries";
+                                                                                                        string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
 
                                                                                                         var context = new RequestContext();
                                                                                                         context.UserAuthorization = user;
                                                                                                         context.Method =  "POST";
                                                                                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                                        // Requires for GET post tunneling
+                                                                                                        this.CreateTunnelingPostStream(context, query);
 
                                                                                                         var exec = await this.ExecuteQueryAsync(context);
                                                                                                         if (!exec)
                                                                                                             this.HandleJsonErrorResponse(context);
                                                                                                         
-                                                                                                        var result = this.HandleJsonResponse<Targeting.States>(context);
+                                                                                                        var result = this.HandleJsonResponse<Targeting.Countries>(context);
                                                                                                         return result;
                                                                                                     }
                                                                                                         
@@ -10603,23 +11092,30 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                                                         /// 
                                                                                                         /// </summary>
                                                                                                         /// <remarks>
-                                                                                                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+                                                                                                        /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/states#get-all
                                                                                                         /// </remarks>
-                                                                                                        public Targeting.Regions GetAllRegions(
+                                                                                                        public Targeting.States GetAllStates(
                                                                                                               UserAuthorization user 
+                                                                                                            , string dataLanguage 
+                                                                                                            , string dataCountry 
                                                                                                         )
                                                                                                         {
-                                                                                                            var url = "/v2/regions";
+                                                                                                            string skipUrlParamsEscape = "";
+                                                                                                            var url = "/v2/states";
+                                                                                                            string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
 
                                                                                                             var context = new RequestContext();
                                                                                                             context.UserAuthorization = user;
                                                                                                             context.Method =  "POST";
                                                                                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                                            // Requires for GET post tunneling
+                                                                                                            this.CreateTunnelingPostStream(context, query);
 
                                                                                                             if (!this.ExecuteQuery(context))
                                                                                                                 this.HandleJsonErrorResponse(context);
                                                                                                             
-                                                                                                            var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                                                                            var result = this.HandleJsonResponse<Targeting.States>(context);
                                                                                                             return result;
                                                                                                         }
 
@@ -10627,27 +11123,97 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                                                             /// 
                                                                                                             /// </summary>
                                                                                                             /// <remarks>
-                                                                                                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+                                                                                                            /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/states#get-all
                                                                                                             /// </remarks>
-                                                                                                            public async Task<Targeting.Regions> GetAllRegionsAsync(
+                                                                                                            public async Task<Targeting.States> GetAllStatesAsync(
                                                                                                                   UserAuthorization user 
+                                                                                                                , string dataLanguage 
+                                                                                                                , string dataCountry 
                                                                                                             )
                                                                                                             {
-                                                                                                                var url = "/v2/regions";
+                                                                                                                string skipUrlParamsEscape = "";
+                                                                                                                var url = "/v2/states";
+                                                                                                                string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
 
                                                                                                                 var context = new RequestContext();
                                                                                                                 context.UserAuthorization = user;
                                                                                                                 context.Method =  "POST";
                                                                                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                                                // Requires for GET post tunneling
+                                                                                                                this.CreateTunnelingPostStream(context, query);
 
                                                                                                                 var exec = await this.ExecuteQueryAsync(context);
                                                                                                                 if (!exec)
                                                                                                                     this.HandleJsonErrorResponse(context);
                                                                                                                 
-                                                                                                                var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                                                                                var result = this.HandleJsonResponse<Targeting.States>(context);
                                                                                                                 return result;
                                                                                                             }
                                                                                                                 
+                                                                                                                /// <summary>
+                                                                                                                /// 
+                                                                                                                /// </summary>
+                                                                                                                /// <remarks>
+                                                                                                                /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/regions#get-all
+                                                                                                                /// </remarks>
+                                                                                                                public Targeting.Regions GetAllRegions(
+                                                                                                                      UserAuthorization user 
+                                                                                                                    , string dataLanguage 
+                                                                                                                    , string dataCountry 
+                                                                                                                )
+                                                                                                                {
+                                                                                                                    string skipUrlParamsEscape = "";
+                                                                                                                    var url = "/v2/regions";
+                                                                                                                    string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
+
+                                                                                                                    var context = new RequestContext();
+                                                                                                                    context.UserAuthorization = user;
+                                                                                                                    context.Method =  "POST";
+                                                                                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                                                    // Requires for GET post tunneling
+                                                                                                                    this.CreateTunnelingPostStream(context, query);
+
+                                                                                                                    if (!this.ExecuteQuery(context))
+                                                                                                                        this.HandleJsonErrorResponse(context);
+                                                                                                                    
+                                                                                                                    var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                                                                                    return result;
+                                                                                                                }
+
+                                                                                                                    /// <summary>
+                                                                                                                    /// 
+                                                                                                                    /// </summary>
+                                                                                                                    /// <remarks>
+                                                                                                                    /// See https://docs.microsoft.com/en-us/linkedin/shared/references/v2/standardized-data/locations/regions#get-all
+                                                                                                                    /// </remarks>
+                                                                                                                    public async Task<Targeting.Regions> GetAllRegionsAsync(
+                                                                                                                          UserAuthorization user 
+                                                                                                                        , string dataLanguage 
+                                                                                                                        , string dataCountry 
+                                                                                                                    )
+                                                                                                                    {
+                                                                                                                        string skipUrlParamsEscape = "";
+                                                                                                                        var url = "/v2/regions";
+                                                                                                                        string queryFormat = "locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
+
+                                                                                                                        var context = new RequestContext();
+                                                                                                                        context.UserAuthorization = user;
+                                                                                                                        context.Method =  "POST";
+                                                                                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                                                        // Requires for GET post tunneling
+                                                                                                                        this.CreateTunnelingPostStream(context, query);
+
+                                                                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                                                                        if (!exec)
+                                                                                                                            this.HandleJsonErrorResponse(context);
+                                                                                                                        
+                                                                                                                        var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                                                                                        return result;
+                                                                                                                    }
+                                                                                                                        
             }
         }
 
@@ -10682,14 +11248,17 @@ namespace Sparkle.LinkedInNET.Region
                     , string id 
                 )
                 {
-                    string urlFormat = "/v2/regions/{id}";
                     string skipUrlParamsEscape = "";
+                    string urlFormat = "/v2/regions/{id}";
                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "id", id);
+                    var query = "locale.language=en&locale.country=US";
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
                     context.Method =  "POST";
                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    // Requires for GET post tunneling
+                    this.CreateTunnelingPostStream(context, query);
 
                     if (!this.ExecuteQuery(context))
                         this.HandleJsonErrorResponse(context);
@@ -10709,14 +11278,17 @@ namespace Sparkle.LinkedInNET.Region
                         , string id 
                     )
                     {
-                        string urlFormat = "/v2/regions/{id}";
                         string skipUrlParamsEscape = "";
+                        string urlFormat = "/v2/regions/{id}";
                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "id", id);
+                        var query = "locale.language=en&locale.country=US";
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
                         context.Method =  "POST";
                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        // Requires for GET post tunneling
+                        this.CreateTunnelingPostStream(context, query);
 
                         var exec = await this.ExecuteQueryAsync(context);
                         if (!exec)
@@ -10754,14 +11326,20 @@ namespace Sparkle.LinkedInNET.Ads
                 /// </summary>
                 public Ads.AdAnalytics GetAdAnalytics(
                       UserAuthorization user 
+                    , string postId 
                 )
                 {
+                    string skipUrlParamsEscape = "";
                     var url = "/v2/adAnalyticsV2";
+                    string queryFormat = "q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&shares[0]=urn:li:share:{postId}";
+                    var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "postId", postId);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
                     context.Method =  "POST";
                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    // Requires for GET post tunneling
+                    this.CreateTunnelingPostStream(context, query);
 
                     if (!this.ExecuteQuery(context))
                         this.HandleJsonErrorResponse(context);
@@ -10775,14 +11353,20 @@ namespace Sparkle.LinkedInNET.Ads
                     /// </summary>
                     public async Task<Ads.AdAnalytics> GetAdAnalyticsAsync(
                           UserAuthorization user 
+                        , string postId 
                     )
                     {
+                        string skipUrlParamsEscape = "";
                         var url = "/v2/adAnalyticsV2";
+                        string queryFormat = "q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&shares[0]=urn:li:share:{postId}";
+                        var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "postId", postId);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
                         context.Method =  "POST";
                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        // Requires for GET post tunneling
+                        this.CreateTunnelingPostStream(context, query);
 
                         var exec = await this.ExecuteQueryAsync(context);
                         if (!exec)
@@ -10797,14 +11381,20 @@ namespace Sparkle.LinkedInNET.Ads
                         /// </summary>
                         public Ads.AdAnalytics GetAdSharePostAnalytics(
                               UserAuthorization user 
+                            , string postId 
                         )
                         {
+                            string skipUrlParamsEscape = "";
                             var url = "/v2/adAnalyticsV2";
+                            string queryFormat = "q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&fields=follows,likes,comments,clicks,actionClicks,adUnitClicks,shares,otherEngagements,totalEngagements,impressions,companyPageClicks,landingPageClicks,viralImpressions,viralTotalEngagements&shares[0]={postId}";
+                            var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "postId", postId);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
                             context.Method =  "POST";
                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                            // Requires for GET post tunneling
+                            this.CreateTunnelingPostStream(context, query);
 
                             if (!this.ExecuteQuery(context))
                                 this.HandleJsonErrorResponse(context);
@@ -10818,14 +11408,20 @@ namespace Sparkle.LinkedInNET.Ads
                             /// </summary>
                             public async Task<Ads.AdAnalytics> GetAdSharePostAnalyticsAsync(
                                   UserAuthorization user 
+                                , string postId 
                             )
                             {
+                                string skipUrlParamsEscape = "";
                                 var url = "/v2/adAnalyticsV2";
+                                string queryFormat = "q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&fields=follows,likes,comments,clicks,actionClicks,adUnitClicks,shares,otherEngagements,totalEngagements,impressions,companyPageClicks,landingPageClicks,viralImpressions,viralTotalEngagements&shares[0]={postId}";
+                                var query = FormatQuery(queryFormat, default(FieldSelector), skipUrlParamsEscape, "postId", postId);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
                                 context.Method =  "POST";
                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                // Requires for GET post tunneling
+                                this.CreateTunnelingPostStream(context, query);
 
                                 var exec = await this.ExecuteQueryAsync(context);
                                 if (!exec)
