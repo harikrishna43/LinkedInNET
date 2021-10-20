@@ -177,8 +177,8 @@
                UseFieldSelectors="0" />
     
 		<ApiMethod MethodName="GetUserAdminApprOrganizations" 
-               HttpMethod="POST" RequiresTunneling="1" 
-               Path="/v2/organizationalEntityAcls" 
+               HttpMethod="GET" RequiresTunneling="1" 
+               Path="/v2/organizationAcls" 
                Query="q=roleAssignee&amp;role=ADMINISTRATOR&amp;projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))"
                ReturnType="OrganizationalEntityAcls"
                Title="Retrieve list of companies where current user is administrator and is approved"
