@@ -8145,12 +8145,12 @@ namespace Sparkle.LinkedInNET.Organizations
                                             , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
                                         )
                                         {
-                                            var url = "/v2/organizationalEntityAcls";
+                                            var url = "/v2/organizationAcls";
                                             var query = "q=roleAssignee&role=ADMINISTRATOR&projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))";
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
-                                            context.Method =  "POST";
+                                            context.Method =  "GET";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
                                             // Requires for GET post tunneling
                                             this.CreateTunnelingPostStream(context, query);
@@ -8173,12 +8173,12 @@ namespace Sparkle.LinkedInNET.Organizations
                                                 , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
                                             )
                                             {
-                                                var url = "/v2/organizationalEntityAcls";
+                                                var url = "/v2/organizationAcls";
                                                 var query = "q=roleAssignee&role=ADMINISTRATOR&projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))";
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
-                                                context.Method =  "POST";
+                                                context.Method =  "GET";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
                                                 // Requires for GET post tunneling
                                                 this.CreateTunnelingPostStream(context, query);
