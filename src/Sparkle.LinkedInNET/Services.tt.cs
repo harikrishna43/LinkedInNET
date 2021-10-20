@@ -835,10 +835,10 @@ namespace Sparkle.LinkedInNET.Organizations
     {
         /// <summary>
         /// Field: 'elements' (on-demand)
-        /// Field: 'elements*(*,organizationalTarget~(id))'
-        /// Field: 'elements*(*,organizationalTarget~(logo))'
-        /// Field: 'elements*(*,organizationalTarget~(name))'
-        /// Field: 'elements*(*,organizationalTarget~(id,logo,name))'
+        /// Field: 'elements*(*,organization~(id))'
+        /// Field: 'elements*(*,organization~(logo))'
+        /// Field: 'elements*(*,organization~(name))'
+        /// Field: 'elements*(*,organization~(id,logo,name))'
         /// </summary>
         [XmlElement(ElementName = "elements")]
         [JsonProperty(PropertyName = "elements")]
@@ -884,18 +884,11 @@ namespace Sparkle.LinkedInNET.Organizations
         public string RoleAssignee { get; set; }
 
         /// <summary>
-        /// Field: 'organizationalTarget' (on-demand)
+        /// Field: 'organization~' (on-demand)
+        /// Field: 'organization~(id)'
         /// </summary>
-        [XmlElement(ElementName = "organizationalTarget")]
-        [JsonProperty(PropertyName = "organizationalTarget")]
-        public string OrganizationalTarget { get; set; }
-
-        /// <summary>
-        /// Field: 'organizationalTarget~' (on-demand)
-        /// Field: 'organizationalTarget~(id)'
-        /// </summary>
-        [XmlElement(ElementName = "organizationalTarget~")]
-        [JsonProperty(PropertyName = "organizationalTarget~")]
+        [XmlElement(ElementName = "organization~")]
+        [JsonProperty(PropertyName = "organization~")]
         public Organization Organization { get; set; }
 
     }
@@ -1919,39 +1912,39 @@ namespace Sparkle.LinkedInNET.Organizations
         public static FieldSelector<Organization> WithAllFields(this FieldSelector<Organization> me) { return me.AddRange("id", "name", "logoV2", "vanityName"); }
         
         /// <summary>
-        /// Includes the field 'elements*(*,organizationalTarget~(id))'.
+        /// Includes the field 'elements*(*,organization~(id))'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsId(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organizationalTarget~(id))"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsId(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organization~(id))"); }
         
         /// <summary>
-        /// Includes the field 'elements*(*,organizationalTarget~(logo))'.
+        /// Includes the field 'elements*(*,organization~(logo))'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsLogo(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organizationalTarget~(logo))"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsLogo(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organization~(logo))"); }
         
         /// <summary>
-        /// Includes the field 'elements*(*,organizationalTarget~(name))'.
+        /// Includes the field 'elements*(*,organization~(name))'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsName(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organizationalTarget~(name))"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsName(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organization~(name))"); }
         
         /// <summary>
-        /// Includes the field 'elements*(*,organizationalTarget~(id,logo,name))'.
+        /// Includes the field 'elements*(*,organization~(id,logo,name))'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsAll(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organizationalTarget~(id,logo,name))"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsAll(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organization~(id,logo,name))"); }
         
         /// <summary>
         /// Includes all the fields.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<OrganizationalEntityAcls> WithAllFields(this FieldSelector<OrganizationalEntityAcls> me) { return me.AddRange("elements*(*,organizationalTarget~(id))", "elements*(*,organizationalTarget~(logo))", "elements*(*,organizationalTarget~(name))", "elements*(*,organizationalTarget~(id,logo,name))"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithAllFields(this FieldSelector<OrganizationalEntityAcls> me) { return me.AddRange("elements*(*,organization~(id))", "elements*(*,organization~(logo))", "elements*(*,organization~(name))", "elements*(*,organization~(id,logo,name))"); }
         
         /// <summary>
         /// Includes the field 'state'.
@@ -1975,25 +1968,18 @@ namespace Sparkle.LinkedInNET.Organizations
         public static FieldSelector<OrgEntElements> WithRoleAssignee(this FieldSelector<OrgEntElements> me) { return me.Add("roleAssignee"); }
         
         /// <summary>
-        /// Includes the field 'organizationalTarget'.
+        /// Includes the field 'organization~(id)'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<OrgEntElements> WithOrganizationalTarget(this FieldSelector<OrgEntElements> me) { return me.Add("organizationalTarget"); }
-        
-        /// <summary>
-        /// Includes the field 'organizationalTarget~(id)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<OrgEntElements> WithOrganization(this FieldSelector<OrgEntElements> me) { return me.Add("organizationalTarget~(id)"); }
+        public static FieldSelector<OrgEntElements> WithOrganization(this FieldSelector<OrgEntElements> me) { return me.Add("organization~(id)"); }
         
         /// <summary>
         /// Includes all the fields.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<OrgEntElements> WithAllFields(this FieldSelector<OrgEntElements> me) { return me.AddRange("state", "role", "roleAssignee", "organizationalTarget", "organizationalTarget~(id)"); }
+        public static FieldSelector<OrgEntElements> WithAllFields(this FieldSelector<OrgEntElements> me) { return me.AddRange("state", "role", "roleAssignee", "organization~(id)"); }
         
         /// <summary>
         /// Includes the field 'elements'.
@@ -8145,15 +8131,12 @@ namespace Sparkle.LinkedInNET.Organizations
                                             , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
                                         )
                                         {
-                                            var url = "/v2/organizationAcls";
-                                            var query = "q=roleAssignee&role=ADMINISTRATOR&projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))";
+                                            var url = "/v2/organizationAcls?q=roleAssignee&role=ADMINISTRATOR&projection=(elements*(*,organization~(id, name, vanityName, logoV2(original~:playableStreams))))";
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
                                             context.Method =  "GET";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-                                            // Requires for GET post tunneling
-                                            this.CreateTunnelingPostStream(context, query);
 
                                             if (!this.ExecuteQuery(context))
                                                 this.HandleJsonErrorResponse(context);
@@ -8173,15 +8156,12 @@ namespace Sparkle.LinkedInNET.Organizations
                                                 , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
                                             )
                                             {
-                                                var url = "/v2/organizationAcls";
-                                                var query = "q=roleAssignee&role=ADMINISTRATOR&projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))";
+                                                var url = "/v2/organizationAcls?q=roleAssignee&role=ADMINISTRATOR&projection=(elements*(*,organization~(id, name, vanityName, logoV2(original~:playableStreams))))";
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
                                                 context.Method =  "GET";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-                                                // Requires for GET post tunneling
-                                                this.CreateTunnelingPostStream(context, query);
 
                                                 var exec = await this.ExecuteQueryAsync(context);
                                                 if (!exec)

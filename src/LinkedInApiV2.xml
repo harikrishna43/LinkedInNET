@@ -177,9 +177,8 @@
                UseFieldSelectors="0" />
     
 		<ApiMethod MethodName="GetUserAdminApprOrganizations" 
-               HttpMethod="GET" RequiresTunneling="1" 
-               Path="/v2/organizationAcls" 
-               Query="q=roleAssignee&amp;role=ADMINISTRATOR&amp;projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))"
+               HttpMethod="GET" 
+             Path="/v2/organizationAcls?q=roleAssignee&amp;role=ADMINISTRATOR&amp;projection=(elements*(*,organization~(id, name, vanityName, logoV2(original~:playableStreams))))"             
                ReturnType="OrganizationalEntityAcls"
                Title="Retrieve list of companies where current user is administrator and is approved"
                RequiresUserAuthentication="1" 
@@ -245,20 +244,19 @@
     
 		<ReturnType Name="OrganizationalEntityAcls" ClassName="OrganizationalEntityAcls" AutoGenerateFieldSelectors="1">
 			<Field Name="elements" Type="OrgEntElements" IsCollection="1">
-				<FieldSelector Name="elements*(*,organizationalTarget~(id))" PropertyName="OrgEntElementsId" />
-				<FieldSelector Name="elements*(*,organizationalTarget~(logo))" PropertyName="OrgEntElementsLogo" />
-				<FieldSelector Name="elements*(*,organizationalTarget~(name))" PropertyName="OrgEntElementsName" />
-				<FieldSelector Name="elements*(*,organizationalTarget~(id,logo,name))" PropertyName="OrgEntElementsAll" />
+				<FieldSelector Name="elements*(*,organization~(id))" PropertyName="OrgEntElementsId" />
+				<FieldSelector Name="elements*(*,organization~(logo))" PropertyName="OrgEntElementsLogo" />
+				<FieldSelector Name="elements*(*,organization~(name))" PropertyName="OrgEntElementsName" />
+				<FieldSelector Name="elements*(*,organization~(id,logo,name))" PropertyName="OrgEntElementsAll" />
 			</Field>
 		</ReturnType>
     
 		<ReturnType Name="OrgEntElements" ClassName="OrgEntElements" AutoGenerateFieldSelectors="1">
 			<Field Name="state" />
 			<Field Name="role" />
-			<Field Name="roleAssignee" />
-			<Field Name="organizationalTarget" />
-			<Field Name="organizationalTarget~" PropertyName="Organization" Type="Organization">
-				<FieldSelector Name="organizationalTarget~(id)" PropertyName="Organization" />
+			<Field Name="roleAssignee" />			
+			<Field Name="organization~" PropertyName="Organization" Type="Organization">
+				<FieldSelector Name="organization~(id)" PropertyName="Organization" />
 			</Field>
 		</ReturnType>
     
